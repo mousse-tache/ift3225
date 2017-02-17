@@ -1,0 +1,20 @@
+start = element bibliotheque {livre+}
+
+livre = element livre {attribute langue{xsd:language},attribute auteurs{auteur+}, titre, annee, prix, couverture?, film?, commentaire?, personnage}
+
+auteur = element auteur {nom, prenom, (pays,photo,commentaire)?, attribute ident{xsd:ID}}
+personnage = element personnage {nom, prenom, (pays,photo,commentaire)?}
+prenom = element prenom {xsd:string}
+nom = element nom {xsd:string}
+pays = element pays {xsd:string}
+photo = element photo {xsd:URL}
+commentaire = element commentaire {xsd:string}
+
+titre = element titre {xsd:string}
+annee = element annee(xsd:gYear)
+prix = element prix(element valeur{xsd:number},attribute monnaie(xsd:string))
+couverture = element couverture{xsd:URL}
+film = element film {xsd:URL}
+
+
+

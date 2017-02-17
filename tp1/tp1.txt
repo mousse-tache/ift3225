@@ -1,0 +1,30 @@
+Ce travail consiste à définir une base de données avec l’utilisation de XML. La base de données (bibliotheque) contient des informations sur vos livres (livre) comprenant des personnages et sur leur(s) auteur(s) (auteur). 
+
+Pour chaque auteur, la base de données doit avoir les informations suivantes: son nom (nom) et son prénom (prenom) dans n’importe quel ordre, suivis optionnellement dans cet ordre par le pays d’où l’auteur est originaire (pays), par un URL pour une photo (photo) et par un commentaire (commentaire). Chaque auteur devrait avoir un attribut (ident) qui l’identifie uniquement.
+
+Pour les livres, la base de données doit avoir les informations suivantes en respectant l’ordre: deux attributs, la langue du livre (xsd:language) et  une liste de référence aux auteurs (auteurs)  ainsi que les éléments suivants: le titre (titre), l’année de publication (annee) et le prix (prix) qui va être donné par sa valeur (valeur) qui contient optionnellement un attribut qui donne la monnaie dans laquelle le livre a été acheté (monnaie). De plus, chaque livre peut avoir les informations optionnelles suivantes: la couverture du livre (couverture) sous forme d’un URL, un film associé au livre (film) aussi sous forme d’URL et un commentaire sur le livre (commentaire). Finalement, on peut avoir des personnages (personnage) avec les mêmes informations que pour un auteur en excluant l'identifiant.
+
+Phase 1: Création de schémas
+
+Pour la création d’un schéma, vous devez utiliser oXygen. Avec cet éditeur XML vous allez créer un ou plusieurs schémas (Relax NG Compact) pour la base de données, les livres et les auteurs et vous allez pouvoir vérifier s’ils sont valides. Afin d’avoir une nomenclature uniforme et de faciliter les tests par le démonstrateur, vous devez définir les éléments avec les noms indiqués entre parenthèses dans la section précédente.
+
+Recommandations:
+
+    utiliser le style de modélisation dans le schéma qui définit d’abord les types et les utilise ensuite pour définir les éléments
+
+    utiliser le plus possible les types pré-définis existant dans le langage de définition de schémas
+
+    restreindre le plus possible la définition des types de façon à valider l’entrée
+
+Phase 2: Entrée des données
+
+Vous allez entrer plusieurs données avec l’éditeur  oXygen qui respectent le Schéma et vous devez les valider.
+Phase 3 – Transformation pour la visualisation des données
+
+Dans cette phase, vous allez créer deux fichiers de transformation en utilisant oXygen:
+
+    un fichier pour visualiser les informations associées à tous les auteurs (comme leur information personnelle, les informations des livres qu'ils ont écrit) ou à un seul auteur dont le nom sera passé comme valeur du paramètre auteur
+
+    un fichier pour visualiser les informations associées aux livres (comme leur auteur), triés en ordre décroissant de leur prix, ou à un seul livre dont le nom sera passé comme valeur du paramètre livre
+
+Ces fichiers de transformation doivent être écrits en XSLT et ils vont être utilisés dans oXygen pour générer les deux fichiers en format XHTML-Strict valide qui donneront deux vues différentes sur vos données: une qui les présente par auteur et une autre par livre. Je vous encourage d'utiliser du CSS pour présenter les informations.
