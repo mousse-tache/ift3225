@@ -1,8 +1,12 @@
-start = element bibliotheque {livre+}
+datatypes xsd =  "http://www.w3.org/2001/XMLSchema-datatypes"
 
-livre = element livre {attribute langue{xsd:language},attribute auteurs{auteur+}, titre, annee, prix, couverture?, film?, commentaire?, personnage}
+start = element bibliotheque {(livre | auteurs)+}
 
-auteur = element auteur {nom, prenom, (pays,photo,commentaire)?, attribute ident{xsd:ID}}
+livre = element livre {attribute langue{xsd:language},auteurs, titre, annee, prix, couverture?, film?, commentaire?, personnage}
+
+auteurs=attribute auteurs {list{xsd:IDREF}}
+
+auteur = element auteur {(nom & prenom), (pays,photo,commentaire)?, attribute ident{xsd:ID}}
 personnage = element personnage {nom, prenom, (pays,photo,commentaire)?}
 prenom = element prenom {xsd:string}
 nom = element nom {xsd:string}
