@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="tp1auteurs.xsl"?>
+<bibliotheque>
+	
+	<livre langue="english" auteurs="0001 0002">
+		<titre>Happy Lemons</titre>
+		<annee>1990</annee>
+		<prix>
+			<valeur> 9.99 <valeur>
+		</prix>
+		<couverture>www.perdu.com/</couverture>
+		<film>www.perdu.com/</film>
+		<commentaire>Bien</commentaire>
+		<personnage>
+			<prenom>Happy</prenom>
+			<nom>Lemons</nom>
+		</personnage>
+		<personnage>
+			<prenom>Bad</prenom>
+			<nom>Lemons</nom>
+			<pays>Venezuela</pays>
+			<photo>www.perdu.com</photo>
+			<commentaire>Mechant</commentaire>
+		</personnage>
+	</livre>
+	
+	<auteur ident="0001">
+		<prenom>Henri</prenom>
+		<nom>St-Henri</nom>
+		<pays>Irlande</pays>
+		<photo>www.perdu.com</photo>
+		<commentaire>numberOne</commentaire>
+	</auteur>
+	
+	<auteur ident="0002">
+		<prenom>Julie</prenom>
+		<nom>Ste-Julie</nom>
+		<pays>Russie</pays>
+		<photo>www.perdu.com</photo>
+		<commentaire>numberTwo</commentaire>
+	</auteur>	
+	
+</bibliotheque>
