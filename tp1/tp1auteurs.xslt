@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template name="auteur">
   <xsl:param name="auteur"/>
   <html>
    <body>
-    <h2><xsl:value-of select="nom"> <xsl:value-of>
+    <h2><xsl:value-of select="nom"/>
     </h2>
       <ul>
         <li>
-          <xsl:value-of select="prenom"> <xsl:value-of>
-          <xsl:value-of select="nom"> <xsl:value-of>
+          <xsl:value-of select="prenom"/> 
+          <xsl:value-of select="nom"/> 
         </li>
         <li>
           <xsl:element name="img">
