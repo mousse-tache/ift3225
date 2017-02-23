@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="tp1auteurs.xsl"?>
 <?xml-stylesheet type="text/xsl" href="tp1livres.xsl"?>
+<?xml-model href="tp1.rnc" type="application/relax-ng-compact-syntax"?>
 
 <bibliotheque>
 	

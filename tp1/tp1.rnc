@@ -4,7 +4,7 @@ start = element bibliotheque {(livre | auteurs)+}
 
 livre = element livre {attribute langue{xsd:language},auteurs, titre, annee, prix, couverture?, film?, commentaire?, personnage}
 
-auteurs=attribute auteurs {list{xsd:IDREFS}}
+auteurs=attribute auteurs {xsd:IDREFS}
 
 auteur = element auteur {(nom & prenom), (pays,photo,commentaire)?, attribute ident{xsd:ID}}
 personnage = element personnage {nom, prenom, (pays,photo,commentaire)?}
