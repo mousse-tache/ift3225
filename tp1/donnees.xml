@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="tp1auteurs.xsl"?>
+<?xml-stylesheet type="text/xsl" href="tp1livres.xsl"?>
+
 <bibliotheque>
 	
 	<livre langue="english" auteurs="0001 0002">
