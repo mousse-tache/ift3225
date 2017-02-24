@@ -1,0 +1,19 @@
+body {
+	width:80%;
+	margin: auto;
+	padding:5%;
+}
+
+td,th {
+	padding: 2%;
+}
+
+table {
+  border-collapse: separate;
+  width: 100%;
+  text-align: left;
+}
+
+h1,h2 {
+	text-align: center;
+}

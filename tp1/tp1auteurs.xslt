@@ -6,8 +6,8 @@
   <xsl:param name="auteur"/>
   <html>
    <body>
-    <h2><xsl:value-of select="nom"/>
-    </h2>
+    <h1><xsl:value-of select="nom"/>
+    </h1>
       <ul>
         <li>
           <xsl:value-of select="prenom"/> 
@@ -29,16 +29,23 @@
 
 <xsl:template match="/">
   <html>
+    <head>
+            <title>Liste des auteurs</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
    <body>
-    <h2>Auteurs</h2>
+    <h1>Auteurs</h1>
     <table>
       <tr>
+        <th></th>
         <th>Auteur</th>
         <th>Origine</th>
         <th>Photo</th>
         <th>Commentaire</th>
       </tr>
-      <xsl:for-each select="bibliotheque/livres/auteurs/auteur">
+      <xsl:for-each select="bibliotheque/auteur">
+        <xsl:sort select="nom" order="descending"/>
+            <xsl:sort select="prenom"/>
         <tr>
           <td><xsl:value-of select="nom"/>,<xsl:value-of select="prenom"/></td>
           <td><xsl:value-of select="pays"/></td>
