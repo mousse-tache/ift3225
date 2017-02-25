@@ -35,8 +35,8 @@
         </td>
           <td><xsl:value-of select="titre"/></td>
           <td>
-          <xsl:for-each select="auteurs">
-          <xsl:value-of select="nom"/>,<xsl:value-of select="prenom"/>
+          <xsl:for-each select="@auteurs">
+          <xsl:value-of select="@idref/nom"/>,<xsl:value-of select="prenom" separator="&#xA;"/>
           </xsl:for-each>
           </td>
           <td><xsl:value-of select="annee"/></td>

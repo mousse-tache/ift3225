@@ -37,7 +37,6 @@
     <h1>Auteurs</h1>
     <table>
       <tr>
-        <th></th>
         <th>Auteur</th>
         <th>Origine</th>
         <th>Photo</th>
