@@ -5,7 +5,7 @@
 
 <bibliotheque>
 	
-	<livre langue="english" auteurs="0001 0002">
+	<livre langue="english" auteurs="0001">
 		<titre>Happy Lemons</titre>
 		<annee>1990</annee>
 		<prix>

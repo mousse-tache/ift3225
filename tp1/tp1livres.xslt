@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:key name="auteurid" match="auteur" use="id"/>
+
 <xsl:template match="/">
   <html>
     <head>
@@ -21,6 +23,7 @@
         <th>Commentaire</th>
         <th>Personnages</th>
       </tr>
+
       <xsl:for-each select="bibliotheque/livre">
         <xsl:sort  select="/prix/valeur" order="descending"/> 
         
@@ -35,8 +38,8 @@
         </td>
           <td><xsl:value-of select="titre"/></td>
           <td>
-          <xsl:for-each select="@auteurs">
-          <xsl:value-of select="@idref/nom"/>,<xsl:value-of select="prenom" separator="&#xA;"/>
+          <xsl:for-each select="key('auteurid', @auteurs)">
+          <xsl:value-of select="nom"/>,<xsl:value-of select="prenom"/>
           </xsl:for-each>
           </td>
           <td><xsl:value-of select="annee"/></td>
@@ -44,7 +47,12 @@
           <td><xsl:value-of select="langue"/></td>
           <td><xsl:value-of select="film"/></td>
           <td><xsl:value-of select="commentaire"/></td>
-          <td><xsl:value-of select="personnage"/></td>
+          <td><xsl:for-each select="personnage">
+          <xsl:value-of select="prenom"/>   
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="nom"/> 
+          <br/>
+          </xsl:for-each></td>
         </tr>
       </xsl:for-each>
     </table>
