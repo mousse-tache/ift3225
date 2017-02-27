@@ -22,7 +22,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   text-align: left;
-  font-size: 2vmin;
+  
 }
 
 
@@ -34,11 +34,22 @@ h1,h2 {
 	text-align: center;
 }
 
-td, th {padding: 1%;}
+td, th {
+padding: 2%;
+padding-left:0;
+width:90%;
+margin:auto; 
+max-width: 20%;}
 
 th {
 	background-color: blue;
 	color:white; 
+}
+img {
+	max-height: 100px;
+	width: 90%;
+	margin:auto;
+
 }
 
 

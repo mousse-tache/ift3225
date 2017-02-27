@@ -16,7 +16,7 @@
         <li>
           <xsl:element name="img">
           <xsl:attribute name="src">
-            <xsl:value-of select="url"/>
+            <xsl:value-of select="photo"/>
           </xsl:attribute>
           </xsl:element>
           </li>
@@ -51,7 +51,7 @@
           <td>
           <xsl:element name="img">
           <xsl:attribute name="src">
-            <xsl:value-of select="url"/>
+            <xsl:value-of select="photo"/>
           </xsl:attribute>
           </xsl:element>
           </td>

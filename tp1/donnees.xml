@@ -26,7 +26,29 @@
 			<commentaire>Mechant</commentaire>
 		</personnage>
 	</livre>
+
+	<livre langue="english" auteurs="0003">
+		<titre>Le Guide du Routard Galactique</titre>
+		<annee>1978</annee>
+		<prix>
+			<valeur> 19.99 </valeur>
+		</prix>
+		<couverture>https://upload.wikimedia.org/wikipedia/en/b/bd/H2G2_UK_front_cover.jpg</couverture>
+		<film>https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(film)</film>
+		<commentaire></commentaire>
+		<personnage>
+			<prenom>Ford</prenom>
+			<nom>Prefect</nom>
+		</personnage>
+		<personnage>
+			<prenom>Arthur</prenom>
+			<nom>Dent</nom>
+			<pays>United Kingdom</pays>
+			<commentaire>Héro</commentaire>
+		</personnage>
+	</livre>
 	
+
 	<auteur ident="0001">
 		<prenom>Henri</prenom>
 		<nom>St-Henri</nom>
@@ -43,4 +65,12 @@
 		<commentaire>numberTwo</commentaire>
 	</auteur>	
 	
+
+	<auteur ident="0003">
+		<prenom>Douglas</prenom>
+		<nom>Adams</nom>
+		<pays>Royaume-Uni</pays>
+		<photo>https://upload.wikimedia.org/wikipedia/commons/c/c0/Douglas_adams_portrait_cropped.jpg</photo>
+		<commentaire>Auteur absurde, célèbre pour le Guide du Routard Galactique</commentaire>
+	</auteur>	
 </bibliotheque>
