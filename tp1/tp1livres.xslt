@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:key name="auteurid" match="auteur" use="id"/>
+<xsl:key name="auteurid" match="auteur" use="@ident"/>
 
 <xsl:template match="/">
   <html>
