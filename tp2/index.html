@@ -1,0 +1,50 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Jeu de Taquin - IFT3225</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Jeu de Taquin créé dans le cadre du cours IFT3225">
+        <meta name="keywords" content="IFT3225,DIRO,TP2">
+        <link rel="stylesheet" type="text/css" href="public/css/style.css" media="screen">
+        <script src="public/js/jquery-3.1.1.min.js"></script>
+        <script src="public/js/form.js"></script>
+        <script src="public/js/game.js"></script>
+    </head> 
+    
+    <body>   
+    
+    <header>
+        <h3>Jeu de Taquin</h3>    
+    </header>
+    
+    <div class='gamewrapper'>
+        <form>
+            <label>URL de l'image</label>
+            <input type="url" id="url">
+            <label>Nombre de lignes</label>
+            <input type="number" id="rows" min="1" value="1">
+            <label>Nombre de colomnes</label>
+            <input type="number" id="columns" min="1" value="1">
+            <label>Affichage des numéro</label>
+            <input type="checkbox" id="affichernuméro">
+            <input type="submit" id="brassertuiles" value="Brasser les tuiles">
+            <div>
+            <span>Déplacement:</span>
+            <span id="score">0</span>
+         </div>
+        </form>
+
+        <img src="public/images/paysage.jpeg" id="thumbnail" class="thumbnail"\>
+    </div>
+
+    <footer>
+        <ul>
+            Auteurs
+            <li>Félix Bélanger-Robillard</li>
+            <li>William Neveu</li>
+        </ul>
+    </footer>
+
+    </body>
+</html>
