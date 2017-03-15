@@ -104,13 +104,15 @@ table {
 	border-spacing: 0;
     border-collapse: collapse;
 }
-tr {margin: 0; padding: 0;}
+tr {margin: 0; padding: 0; 
+	border-spacing: 0;}
 td {
 	display: inline-block;
 	border: 1px black solid;
 	height:100%;
 	margin:0;
 	padding: 0;
+	
 	
 
 }

@@ -1,5 +1,4 @@
-
-var url = $('#url').val();
+var url = 'public/images/paysage.jpeg';
 	
 $(document).ready(function(){
 	
@@ -16,7 +15,41 @@ $(document).ready(function(){
 		
 		var r = $('#rows').val();
 		var c = $('#columns').val();
+		
+		
+		var width = 780/c+'px';
+		var height=380/r+'px';
+		var back = 'url('+url+')';
+		
+		$('#tablewrapper').append(generateGrid(c,r,url));
 
+		$('#tablewrapper td').css({'width':width,
+			'min-height':height,
+			'background-image':back});
+		
+	});
+
+	var gameActions = function() {
+		/*
+		Handler for mouse and keyboards inputs for the game. 
+		Possible actions = {'Up', 'Right', 'Down', 'Left'}
+		*/
+	}
+
+	var shuffle = function(table, v) {
+		/*
+		@param table : table that the cells will be shuffled
+		@param v : float between 0 and 1 which determines the probability each cell will be shuffled
+		return: shuffled table
+		*/
+	}
+
+	var winCheck = function(table) {
+		//Iterates over cells. If they're in the right order, returns true else false
+	}
+
+	var generateGrid = function(c,r,url)  {
+		
 		var divtable = document.getElementById('#tablewrapper');
 		var table = document.createElement('table');
 		var compteur=1;
@@ -34,18 +67,9 @@ $(document).ready(function(){
 		    table.appendChild(tr);
 
 		}
-		$('#tablewrapper').append(table);
-		var width = 780/c+'px';
-		var height=380/r+'px';
-		var back = 'url('+url+')';
-		$('#tablewrapper td').css({'width':width});
+		return table
+	}
 
-		$('#tablewrapper td').css({'min-height':height});
-		$('#tablewrapper').css({'background-image':url});
-		
-	});
-
-	//$('#columns').on('change', genGrid());
 
 });
 
