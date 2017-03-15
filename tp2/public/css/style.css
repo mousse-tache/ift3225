@@ -90,9 +90,19 @@ input {
 
 }
 
-#brassertuiles {
+#brassertuiles, #afficher {
 	margin:1%;
 	padding: 1%;
 	color:white;
 	background-color:grey;
+}
+
+table {width:70%;
+margin: auto;}
+td {
+	display: inline-block;
+	border: 1px black solid;
+	min-height:50px;
+	
+
 }

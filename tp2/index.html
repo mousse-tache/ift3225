@@ -24,11 +24,13 @@
             <input type="url" id="url">
             <label>Nombre de lignes</label>
             <input type="number" id="rows" min="1" value="1">
-            <label>Nombre de colomnes</label>
+            <label>Nombre de colonnes</label>
             <input type="number" id="columns" min="1" value="1">
             <label>Affichage des numéro</label>
-            <input type="checkbox" id="affichernuméro">
-            <input type="submit" id="brassertuiles" value="Brasser les tuiles">
+            <input type="checkbox" id="affichernuméro"></br>
+
+            <input type="button" id="afficher" value="Afficher la grille">
+            <input type="button" id="brassertuiles" value="Brasser les tuiles">
             <div>
             <span>Déplacement:</span>
             <span id="score">0</span>
@@ -36,6 +38,9 @@
         </form>
 
         <img src="public/images/paysage.jpeg" id="thumbnail" class="thumbnail"\>
+        <div id="tablewrapper">
+            
+        </div>
     </div>
 
     <footer>
