@@ -42,7 +42,7 @@ $(document).ready(function(){
 		$('#tablewrapper td').attr('width', 99/c+'%');
 
 	});
-
+	
 	//$('#columns').on('change', genGrid());
 
 });
