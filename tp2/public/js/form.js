@@ -9,6 +9,11 @@ $(document).ready(function(){
 		$('.thumbnail').attr('src', url );
 	});
 
+	$('#brassertuiles').click(function() {
+		var table = getElementById('gametable');
+		
+	});
+
 	$('#afficher').click(function() {
 
 		$('#tablewrapper *').remove();
@@ -26,7 +31,7 @@ $(document).ready(function(){
 		$('#tablewrapper td').css({'width':width,
 			'min-height':height,
 			'background-image':back});
-		
+		$('#tablewrapper table').attr('id', 'gametable')
 	});
 
 	var gameActions = function() {
@@ -52,6 +57,7 @@ $(document).ready(function(){
 		
 		var divtable = document.getElementById('#tablewrapper');
 		var table = document.createElement('table');
+
 		var compteur=1;
 		for (var i = 1; i <= r; i++) {
 
