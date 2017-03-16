@@ -1,6 +1,8 @@
 html {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	font-size: 1.5vw;
+	width: 100%;
+	overflow: hidden;
 }
 
 
@@ -111,8 +113,10 @@ td {
 	border: 1px black solid;
 	height:100%;
 	margin:0;
-	padding: 0;
-	
+	padding:0;
+	color:white;
+	text-shadow: 1px black;
+	text-align: right;
 	
 
 }
