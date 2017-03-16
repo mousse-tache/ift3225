@@ -29,8 +29,11 @@ $(document).ready(function(){
 		$('#tablewrapper').append(generateGrid(c,r,url));
 
 		$('#tablewrapper td').css({'width':width,
-			'min-height':height,
+			'height':height,
 			'background-image':back});
+
+
+
 		$('#tablewrapper table').attr('id', 'gametable')
 	});
 
@@ -57,14 +60,15 @@ $(document).ready(function(){
 		
 		var divtable = document.getElementById('#tablewrapper');
 		var table = document.createElement('table');
-
 		var compteur=1;
 		for (var i = 1; i <= r; i++) {
-
+			
 		    var tr = document.createElement('tr');  
 
 			for (var j = 1; j <= c; j++) {
 				var td = document.createElement('td');
+				var pos = ((j)*100/(c)-(100/c)+'% ')+((i)*100/(r)-(100/r)+'%');
+				td.style.backgroundPosition= pos;
 				td.appendChild(document.createTextNode(compteur));
 				compteur++;
 				tr.appendChild(td);
