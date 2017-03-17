@@ -2,12 +2,23 @@ var url = 'public/images/paysage.jpeg';
 	
 $(document).ready(function(){
 	
-	
+
+	$('#affichernumero').on('change', function() {
+		if ($('#affichernumero').is(':checked')) {
+			
+		$('#tablewrapper span').removeClass('hidden');
+		}
+		else {
+
+		$('#tablewrapper span').addClass('hidden');
+		}
+	});
 
 	$('#url').on('change', function() {
 		url = $('#url').val();
 		$('.thumbnail').attr('src', url );
 	});
+
 
 	$('#brassertuiles').click(function() {
 		var table = getElementById('gametable');
@@ -31,6 +42,7 @@ $(document).ready(function(){
 		$('#tablewrapper td').css({'width':width,
 			'height':height,
 			'background-image':back});
+		$('#tablewrapper span').addClass('hidden');
 
 
 
@@ -69,7 +81,9 @@ $(document).ready(function(){
 				var td = document.createElement('td');
 				var pos = ((j)*100/(c)-(100/c)+'% ')+((i)*100/(r)-(100/r)+'%');
 				td.style.backgroundPosition= pos;
-				td.appendChild(document.createTextNode(compteur));
+				span=document.createElement('span');
+				span.appendChild(document.createTextNode(compteur));
+				td.appendChild(span);
 				compteur++;
 				tr.appendChild(td);
 			}
