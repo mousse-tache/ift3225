@@ -33,8 +33,8 @@ $(document).ready(function(){
 		var c = $('#columns').val();
 		
 		
-		var width = 780/c+'px';
-		var height=380/r+'px';
+		var width = Math.round(780/c)+'px';
+		var height=Math.round(380/r)+'px';
 		var back = 'url('+url+')';
 		
 		$('#tablewrapper').append(generateGrid(c,r,url));

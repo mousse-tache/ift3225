@@ -100,22 +100,22 @@ input {
 }
 
 table {
-	width:  800px;
-	height: 400px;
 	margin: auto;
 	border-spacing: 0;
     border-collapse: collapse;
 }
 tr {margin: 0; padding: 0; 
-	border-spacing: 0;}
+	border-spacing: 0;
+    border-collapse: collapse;
+}
 td {
 	display: inline-block;
-	border: 1px black solid;
+	border: none;
 	height:100%;
 	margin:0;
 	padding:0;
 	color:white;
-	text-shadow: 1px black;
+	text-shadow: 4px black;
 	text-align: right;
 	
 
@@ -127,3 +127,8 @@ td {
 }
 
 .hidden {display: none;}
+
+.grey-tile {
+	background-color:grey;
+	color:grey;
+}
