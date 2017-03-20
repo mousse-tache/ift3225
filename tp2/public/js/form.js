@@ -111,7 +111,7 @@ $(document).ready(function(){
 			y = Math.floor(Math.random() * 2);
 			if (y == 0) x--;
 			
-			if (0 < x + grisR || x + grisR <= r || 0 < y + grisC || y + grisC <= c) {continue;}
+			if ((0 <= x + grisR && x + grisR < r) && 0 <= y + grisC && y + grisC < c) {
 
 			tmp = ordre[grisR][grisC];
 			ordre[grisR][grisC] = ordre[grisR + x][grisC + y];
@@ -124,14 +124,15 @@ $(document).ready(function(){
 			parnt = table.childNodes[grisR].childNodes[grisC].parentNode;
 			parnt.replaceChild(table.childNodes[grisR+x].childNodes[grisC+y], table.childNodes[grisR].childNodes[grisC])
 			
-			table.childNodes[grisR].childNodes[grisC] = table.childNodes[grisR+x].childNodes[grisC+y];
+			//table.childNodes[grisR].childNodes[grisC] = table.childNodes[grisR+x].childNodes[grisC+y];
 			
-			parnt = table.childNodes[grisR+x].childNodes[grisC+y].parentNode
+			parnt = table.childNodes[grisR+x]
 			parnt.replaceChild(tmp, table.childNodes[grisR+x].childNodes[grisC+y])
 			
 			table.childNodes[grisR+x].childNodes[grisC+y] = tmp;
 			grisR = grisR+x;
 			grisC = grisC+y;
+			}
 		}
 
  		//return table;
