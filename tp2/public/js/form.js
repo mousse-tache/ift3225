@@ -212,13 +212,21 @@ $(document).ready(function(){
   		// 38 up
   		// 39 right
   		// 40 down
+  		if (e.which >= 37 && e.which <= 40) {
+  			table = document.getElementById('gametable');
+			tmp = table.childNodes[0].childNodes[0];
+			tmp = tmp.cloneNode(true);
+			
+			parnt = table.childNodes[0];
+			parnt.replaceChild(table.childNodes[0].childNodes[1], table.childNodes[0].childNodes[0]);
+			parnt.insertBefore(tmp, table.childNodes[0].childNodes[0].nextSibling);
+  		}
 
   });
 
-	$('td').click(
-	});
+	$('td').click();
 
-	
+
 
 });
 
