@@ -23,12 +23,14 @@ $(document).ready(function(){
 	$('#brassertuiles').click(function() {
 		$('#tablewrapper *').remove();
 		
+		var img = $('#thumbnail').get(0);
+
 		var r = $('#rows').val();
 		var c = $('#columns').val();
 		
 		
-		var width = 780/c+'px';
-		var height=380/r+'px';
+		var width = Math.round(img.width/c*5)+'px';
+		var height= Math.round(img.height/r*5)+'px';
 		var back = 'url('+url+')';
 		var table = generateGrid(c,r,url);
 		shuffle(table, r, c, 15);
@@ -42,19 +44,21 @@ $(document).ready(function(){
 
 
 		$('#tablewrapper table').attr('id', 'gametable')
-		shuffle($('#gametable'),r,c, 15);
+		
 	});
 
 	$('#afficher').click(function() {
 
 		$('#tablewrapper *').remove();
 		
+		var img = $('#thumbnail').get(0);
+
 		var r = $('#rows').val();
 		var c = $('#columns').val();
 		
 		
-		var width = Math.round(780/c)+'px';
-		var height=Math.round(380/r)+'px';
+		var width = Math.round(img.width/c*5)+'px';
+		var height= Math.round(img.height/r*5)+'px';
 		var back = 'url('+url+')';
 		
 		$('#tablewrapper').append(generateGrid(c,r,url));
@@ -107,7 +111,7 @@ $(document).ready(function(){
 			y = Math.floor(Math.random() * 2);
 			if (y == 0) x--;
 			
-			if (0 > x + grisR || x + grisR >= r || 0 > y + grisC || y + grisC >= c) {continue;}
+			if (0 < x + grisR || x + grisR <= r || 0 < y + grisC || y + grisC <= c) {continue;}
 
 			tmp = ordre[grisR][grisC];
 			ordre[grisR][grisC] = ordre[grisR + x][grisC + y];
@@ -120,12 +124,12 @@ $(document).ready(function(){
 			parnt = table.childNodes[grisR].childNodes[grisC].parentNode;
 			parnt.replaceChild(table.childNodes[grisR+x].childNodes[grisC+y], table.childNodes[grisR].childNodes[grisC])
 			
-			//table.childNodes[grisR].childNodes[grisC] = table.childNodes[grisR+x].childNodes[grisC+y];
+			table.childNodes[grisR].childNodes[grisC] = table.childNodes[grisR+x].childNodes[grisC+y];
 			
 			parnt = table.childNodes[grisR+x].childNodes[grisC+y].parentNode
 			parnt.replaceChild(tmp, table.childNodes[grisR+x].childNodes[grisC+y])
 			
-			//table.childNodes[grisR+x].childNodes[grisC+y] = tmp;
+			table.childNodes[grisR+x].childNodes[grisC+y] = tmp;
 			grisR = grisR+x;
 			grisC = grisC+y;
 		}
