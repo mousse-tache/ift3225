@@ -105,7 +105,8 @@ $(document).ready(function(){
 		};
 
 
-		for(var i = 0; i < 15; i++) {
+		for(var i = 0; i < 1; i++) {
+			/*
 			x = Math.floor(Math.random() * 2);
 			if (x == 0) x--;
 			y = Math.floor(Math.random() * 2);
@@ -123,16 +124,22 @@ $(document).ready(function(){
 			
 			parnt = table.childNodes[grisR].childNodes[grisC].parentNode;
 			parnt.replaceChild(table.childNodes[grisR+x].childNodes[grisC+y], table.childNodes[grisR].childNodes[grisC])
-			
+			*/
 			//table.childNodes[grisR].childNodes[grisC] = table.childNodes[grisR+x].childNodes[grisC+y];
 			
-			parnt = table.childNodes[grisR+x]
-			parnt.replaceChild(tmp, table.childNodes[grisR+x].childNodes[grisC+y])
+			tmp = table.childNodes[0].childNodes[0];
+			save = table.childNodes[0].childNodes[3];
+			tmp = tmp.cloneNode(true);
 			
-			table.childNodes[grisR+x].childNodes[grisC+y] = tmp;
-			grisR = grisR+x;
-			grisC = grisC+y;
-			}
+			parnt = table.childNodes[0];
+			parnt.replaceChild(table.childNodes[0].childNodes[1], table.childNodes[0].childNodes[0]);
+			parnt.insertBefore(tmp, table.childNodes[0].childNodes[0].nextSibling);
+			//parnt.replaceChild(tmp, table.childNodes[0].childNodes[1]);
+			
+			//table.childNodes[grisR+x].childNodes[grisC+y] = tmp;
+			//grisR = grisR+x;
+			//grisC = grisC+y;
+			//}
 		}
 
  		//return table;
