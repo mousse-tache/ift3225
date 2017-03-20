@@ -231,3 +231,9 @@ $(document).ready(function(){
 });
 
 
+window.addEventListener("keydown", function(e) {
+    // space, page up, page down and arrow keys:
+    if([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
