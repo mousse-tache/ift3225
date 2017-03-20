@@ -21,29 +21,58 @@ $(document).ready(function(){
 
 
 	$('#brassertuiles').click(function() {
-		$('#tablewrapper *').remove();
-		
-		var img = $('#thumbnail').get(0);
-
-		var r = $('#rows').val();
-		var c = $('#columns').val();
-		
-		
-		var width = Math.round(img.width/c*5)+'px';
-		var height= Math.round(img.height/r*5)+'px';
-		var back = 'url('+url+')';
-		var table = generateGrid(c,r,url);
-		shuffle(table, r, c, 15);
-		$('#tablewrapper').append(table);
-
-		$('#tablewrapper td').css({'width':width,
-			'height':height,
-			'background-image':back});
-		$('#tablewrapper span').addClass('hidden');
+		if (document.getElementById('gris')!=undefined) {
+			
+			if (confirm("La partie va être réinitialisée, voulez-vous continuez?")) {
 
 
+				$('#tablewrapper *').remove();
+				$('#score').text('0');
+				var img = $('#thumbnail').get(0);
 
-		$('#tablewrapper table').attr('id', 'gametable')
+				var r = $('#rows').val();
+				var c = $('#columns').val();
+				
+				
+				var width = Math.round(img.width/c*5)+'px';
+				var height= Math.round(img.height/r*5)+'px';
+				var back = 'url('+url+')';
+				var table = generateGrid(c,r,url);
+				shuffle(table, r, c, 15);
+				$('#tablewrapper').append(table);
+
+				$('#tablewrapper td').css({'width':width,
+					'height':height,
+					'background-image':back});
+				$('#tablewrapper span').addClass('hidden');
+
+
+
+				$('#tablewrapper table').attr('id', 'gametable')		
+					}
+				}
+				else {
+					$('#tablewrapper *').remove();
+				var img = $('#thumbnail').get(0);
+				var r = $('#rows').val();
+				var c = $('#columns').val();
+				var width = Math.round(img.width/c*5)+'px';
+				var height= Math.round(img.height/r*5)+'px';
+				var back = 'url('+url+')';
+				var table = generateGrid(c,r,url);
+				shuffle(table, r, c, 15);
+				$('#tablewrapper').append(table);
+
+				$('#tablewrapper td').css({'width':width,
+					'height':height,
+					'background-image':back});
+				$('#tablewrapper span').addClass('hidden');
+
+
+
+				$('#tablewrapper table').attr('id', 'gametable')		
+				
+				}
 		
 	});
 
@@ -177,6 +206,19 @@ $(document).ready(function(){
 		return table
 	}
 
+	$(document).keydown(function(e) {
+  		console.log(e.which);
+  		// 37 left
+  		// 38 up
+  		// 39 right
+  		// 40 down
+
+  });
+
+	$('td').click(
+	});
+
+	
 
 });
 
