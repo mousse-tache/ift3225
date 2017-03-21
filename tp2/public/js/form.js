@@ -227,6 +227,11 @@ $(document).ready(function(){
 	$('td').click();
 
 
+	var move = function (e) {
+		$("#element1").before($("#element2"));
+		$("#element1").after($("#element2"));
+	}
+
 
 });
 
