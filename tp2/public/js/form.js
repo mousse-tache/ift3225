@@ -111,15 +111,32 @@ $(document).ready(function(){
 		var span2 = $("span.case:contains('" + b + "')");
 		
 		var style1, style2;
+		var id1, id2;
+		var class1, class2;
 		style1 = span1.parent().attr("style");
 		style2 = span2.parent().attr("style");
+
+		id1= span1.parent().attr("id");
+		id2= span2.parent().attr("id");
 		
+		class1= span1.parent().attr("class");
+		class2= span2.parent().attr("class");
+		
+
+
 		span1.text(b);
 		span2.text(a);
 		
 		span1.parent().attr("style", style2);
 		span2.parent().attr("style", style1);
 		
+
+		span1.parent().attr("id", id2);
+		span2.parent().attr("id", id1);
+
+
+		span1.parent().attr("class", class2);
+		span2.parent().attr("class", class1);
 		
 		
 		// tmp1 = $("span:contains('" + a + "')").parent().html();
@@ -133,7 +150,7 @@ $(document).ready(function(){
 	var shuffle = function(r,c,v) {
 		var grisR = r-1;
 		var grisC = c-1;
-		var pos = r*c-1;
+		var pos = r*c;
 		var gris = $("span.case:contains('" + pos + "')").parent();
 		gris.css('background-image','none');
 		gris.addClass('grey-tile');
