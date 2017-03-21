@@ -305,8 +305,13 @@ var ingame = false;
 	*/
 
 
-	var winCheck = function(table) {
-		//Iterates over cells. If they're in the right order, returns true else false
+	var winCheck = function() {
+		var r = $('#rows').val();
+		var c = $('#columns').val();
+		check = valid(ordre,r,c);
+		if (check) {
+			alert('Vous avez gagné en '+compteur+' tours.');
+		}
 	}
 
 	var generateGrid = function(c,r,url)  {
@@ -410,8 +415,18 @@ var ingame = false;
 		}
 		
 		$('#score').text(compteur);
+		winCheck();
 	}
 
+	var valid = function(ordre,r,c) {
+		for (i=0; i<r; i++) {
+			for (j=0; j<c; j++) {
+				if (ordre[i][j] != j + i*c + 1)
+					return false;
+			}
+		}
+		return true;
+	}
 
 window.addEventListener("keydown", function(e) {
     // space, page up, page down and arrow keys:

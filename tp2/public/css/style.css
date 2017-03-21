@@ -136,3 +136,9 @@ td {
 	background-color:grey;
 	color:grey;
 }
+
+main {
+	width: 80%;
+	text-align: justify;
+	margin: auto;
+}
