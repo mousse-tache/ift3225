@@ -50,7 +50,7 @@ $(document).ready(function(){
 				$('#score').text('0');
 				var r = $('#rows').val();
 				var c = $('#columns').val();
-				shuffle(r, c, r*c*2);	
+				shuffle(r, c, 100);	
 			}
 		
 	});
@@ -107,36 +107,36 @@ $(document).ready(function(){
 	}
 	
 	var swap = function(a,b) {
-		var span1 = $("span.case:contains('" + a + "')");
-		var span2 = $("span.case:contains('" + b + "')");
+		//a++;
+		//b++;
+		console.log (" " + a + " " + b +"\n");
+		var td1 = $("#" + a);
+		var td2 = $("#" + b);
 		
 		var style1, style2;
 		var id1, id2;
 		var class1, class2;
-		style1 = span1.parent().attr("style");
-		style2 = span2.parent().attr("style");
+		style1 = td1.attr("style");
+		style2 = td2.attr("style");
 
-		id1= span1.parent().attr("id");
-		id2= span2.parent().attr("id");
+		id1= td1.attr("id");
+		id2= td2.attr("id");
 		
-		class1= span1.parent().attr("class");
-		class2= span2.parent().attr("class");
+		class1= td1.attr("class");
+		class2= td2.attr("class");
 		
-
-
-		span1.text(b);
-		span2.text(a);
+		td1.children(span).text(b);
+		td2.children(span).text(a);
 		
-		span1.parent().attr("style", style2);
-		span2.parent().attr("style", style1);
-		
+		td1.attr("style", style2);
+		td2.attr("style", style1);
 
-		span1.parent().attr("id", id2);
-		span2.parent().attr("id", id1);
+		td1.attr("id", id2);
+		td2.attr("id", id1);
 
-
-		span1.parent().attr("class", class2);
-		span2.parent().attr("class", class1);
+		td1[0].className = class2;
+		td2[0].className = class1;
+		console.log(td1.attr("class"), class2, td2.attr("class"), class1);
 		
 		
 		// tmp1 = $("span:contains('" + a + "')").parent().html();
@@ -151,20 +151,18 @@ $(document).ready(function(){
 		var grisR = r-1;
 		var grisC = c-1;
 		var pos = r*c;
-		var gris = $("span.case:contains('" + pos + "')").parent();
+		var gris = $("#" + pos);
 		gris.css('background-image','none');
 		gris.addClass('grey-tile');
-		gris.attr('id', 'gris');		
-		console.log("allo" + grisR + grisC + "\n");
+		//gris.attr('id', 'gris');		
+		//console.log("allo" + grisR + grisC + "\n");
 		var ordre = new Array(r);
 		var i,j;
 		var tmp, parnt;
 		var x;
-		for (i=0; i<r; i++) {
-			ordre[i] = new Array(c);
-		}
 		
 		for (i=0; i<r; i++) {
+			ordre[i] = new Array(c);
 			for (j =0; j<c; j++) {
 		 		ordre[i][j] = (j+1) + i*c;
 			}
@@ -176,17 +174,19 @@ $(document).ready(function(){
 			while (check) {
 				
 				x = Math.floor(Math.random() * 4);
-				console.log(x);
+				//console.log(x);
 				
 				if (x == 0){
 					if (grisR - 1 >= 0) {
 						check = false;
 						
+						swap(ordre[grisR][grisC], ordre[grisR-1][grisC]);
+						
 						tmp = ordre[grisR][grisC];
 						ordre[grisR][grisC] = ordre[grisR - 1][grisC];
 						ordre[grisR - 1][grisC] = tmp;
 						
-						swap(grisC + 1 + c*(grisR), grisC + 1 + c*(grisR - 1));
+						//swap(grisC + c*(grisR), grisC + c*(grisR - 1));
 						grisR+=-1;
 					}
 				}
@@ -194,11 +194,13 @@ $(document).ready(function(){
 					if (grisC + 1 < c) {
 						check = false;
 						
+						swap(ordre[grisR][grisC], ordre[grisR][grisC+1]);
+						
 						tmp = ordre[grisR][grisC];
 						ordre[grisR][grisC] = ordre[grisR][grisC + 1];
-						ordre[grisR - 1][grisC] = tmp;
+						ordre[grisR][grisC + 1] = tmp;
 						
-						swap(grisC + c*(grisR), grisC + 1 + c*(grisR));
+						//swap(grisC + c*(grisR), grisC + 1 + c*(grisR));
 						grisC+=1;
 					}
 				}
@@ -206,11 +208,13 @@ $(document).ready(function(){
 					if (grisR + 1 < r) {
 						check = false;
 						
+						swap(ordre[grisR][grisC], ordre[grisR+1][grisC]);
+						
 						tmp = ordre[grisR][grisC];
 						ordre[grisR][grisC] = ordre[grisR + 1][grisC];
 						ordre[grisR + 1][grisC] = tmp;
 						
-						swap(grisC + c*(grisR), grisC + c*(grisR + 1));
+						//swap(grisC + c*(grisR), grisC + c*(grisR + 1));
 						grisR+=1;
 					}
 				}
@@ -218,11 +222,13 @@ $(document).ready(function(){
 					if (grisC - 1 >= 0) {
 						check = false;
 						
+						swap(ordre[grisR][grisC], ordre[grisR][grisC-1]);
+						
 						tmp = ordre[grisR][grisC];
 						ordre[grisR][grisC] = ordre[grisR][grisC - 1];
 						ordre[grisR][grisC - 1] = tmp;
 						
-						swap(grisC + c*(grisR), grisC - 1 + c*(grisR));
+						//swap(grisC + c*(grisR), grisC - 1 + c*(grisR));
 						grisC+=-1;
 					}
 				}
@@ -312,8 +318,9 @@ $(document).ready(function(){
 				var pos = (j * 100/c - 100/c) + '% ' + (i*100/r - 100/r) + '%';
 				
 				td.style.backgroundPosition= pos;
+				td.id = compteur;
 				span=document.createElement('span');
-				span.classList.add('case')
+				span.classList.add('case');
 				span.appendChild(document.createTextNode(compteur));
 				td.appendChild(span);
 				compteur++;
