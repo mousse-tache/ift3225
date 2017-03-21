@@ -1,7 +1,11 @@
- var url = 'public/images/paysage.jpeg';
-	
+var url = 'public/images/paysage.jpeg';
+var ordre;
+var grisC;
+var grisR;
+var compteur = 0;	
 $(document).ready(function(){
-	
+
+var ingame = false;	
 
 	$('#affichernumero').on('change', function() {
 		if ($('#affichernumero').is(':checked')) {
@@ -21,16 +25,16 @@ $(document).ready(function(){
 
 
 	$('#brassertuiles').click(function() {
-		if (document.getElementById('gris')!=undefined) {
-			
+		var r = $('#rows').val();
+		var c = $('#columns').val();
+		if (ingame) {
 			if (confirm("La partie va être réinitialisée, voulez-vous continuez?")) {
 
 				$('#tablewrapper *').remove();
-		
+				compteur=0;
 				$('#score').text('0');
 				var img = $('#thumbnail').get(0);
-				var r = $('#rows').val();
-				var c = $('#columns').val();
+				
 				var width = Math.round(img.width/c*5)+'px';
 				var height= Math.round(img.height/r*5)+'px';
 				var back = 'url('+url+')';
@@ -42,21 +46,22 @@ $(document).ready(function(){
 					'background-image':back});
 				$('#tablewrapper span').addClass('hidden');
 				$('#tablewrapper table').attr('id', 'gametable')
-				shuffle(r, c, r*c*2);		
+				shuffle(r, c, r*c*r*c);		
 					}
 				}
 				else {
-					
+				compteur=0;
 				$('#score').text('0');
 				var r = $('#rows').val();
 				var c = $('#columns').val();
-				shuffle(r, c, 100);	
+				shuffle(r, c, r*c*r*c);	
+				ingame = true;
 			}
 		
 	});
 
 	$('#afficher').click(function() {
-
+		ingame=true;
 		$('#tablewrapper *').remove();
 		
 		var img = $('#thumbnail').get(0);
@@ -91,7 +96,7 @@ $(document).ready(function(){
   		// 39 right
   		// 40 down
   		if (e.which >= 37 && e.which <= 40) {
-  			//TODO
+  			move(e.which);
   		}
 
     });
@@ -148,19 +153,19 @@ $(document).ready(function(){
 		
 		
 	var shuffle = function(r,c,v) {
-		var grisR = r-1;
-		var grisC = c-1;
+		grisR = r-1;
+		grisC = c-1;
 		var pos = r*c;
 		var gris = $("#" + pos);
 		gris.css('background-image','none');
 		gris.addClass('grey-tile');
 		//gris.attr('id', 'gris');		
 		//console.log("allo" + grisR + grisC + "\n");
-		var ordre = new Array(r);
-		var i,j;
+		
 		var tmp, parnt;
 		var x;
-		
+		ordre = new Array(r);
+		var i,j;
 		for (i=0; i<r; i++) {
 			ordre[i] = new Array(c);
 			for (j =0; j<c; j++) {
@@ -334,12 +339,79 @@ $(document).ready(function(){
 		return table
 	}
 
-/*
+
 	var move = function (e) {
-		$("#element1").before($("#element2"));
-		$("#element1").after($("#element2"));
+		var r = $('#rows').val();
+		var c = $('#columns').val();
+			
+		switch (e) {	
+			case 37: //left
+			if (grisC - 1 >= 0) {
+						check = false;
+						
+						swap(ordre[grisR][grisC], ordre[grisR][grisC-1]);
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR][grisC - 1];
+						ordre[grisR][grisC - 1] = tmp;
+						
+						//swap(grisC + c*(grisR), grisC - 1 + c*(grisR));
+						grisC+=-1;
+						compteur+=1;
+					}
+				break;
+			case 38: //up
+				if (grisR - 1 >= 0) {
+						check = false;
+						
+						swap(ordre[grisR][grisC], ordre[grisR-1][grisC]);
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR - 1][grisC];
+						ordre[grisR - 1][grisC] = tmp;
+						
+						//swap(grisC + c*(grisR), grisC + c*(grisR - 1));
+						grisR+=-1;
+						compteur+=1;
+					}
+				break;
+			case 39: //right
+				if (grisC + 1 < c) {
+						check = false;
+						
+						swap(ordre[grisR][grisC], ordre[grisR][grisC+1]);
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR][grisC + 1];
+						ordre[grisR][grisC + 1] = tmp;
+						
+						//swap(grisC + c*(grisR), grisC + 1 + c*(grisR));
+						grisC+=1;
+						compteur+=1;
+					}
+				break;
+			case 40: //down
+				if (grisR + 1 < r) {
+						check = false;
+						
+						swap(ordre[grisR][grisC], ordre[grisR+1][grisC]);
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR + 1][grisC];
+						ordre[grisR + 1][grisC] = tmp;
+						
+						//swap(grisC + c*(grisR), grisC + c*(grisR + 1));
+						grisR+=1;
+						compteur+=1;
+					}
+				break;
+			default:
+			 break;
+		}
+		
+		$('#score').text(compteur);
 	}
-*/
+
 
 window.addEventListener("keydown", function(e) {
     // space, page up, page down and arrow keys:
