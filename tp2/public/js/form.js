@@ -1,4 +1,4 @@
-var url = 'public/images/paysage.jpeg';
+ var url = 'public/images/paysage.jpeg';
 	
 $(document).ready(function(){
 	
@@ -36,8 +36,8 @@ $(document).ready(function(){
 				var width = Math.round(img.width/c*5)+'px';
 				var height= Math.round(img.height/r*5)+'px';
 				var back = 'url('+url+')';
-				var table = $('#gametable')
-				shuffle(table, r, c);		
+				var table = $('#gametable').get(0);
+				shuffle(r, c, 15);		
 					}
 				}
 				else {
@@ -52,7 +52,8 @@ $(document).ready(function(){
 				var width = Math.round(img.width/c*5)+'px';
 				var height= Math.round(img.height/r*5)+'px';
 				var back = 'url('+url+')';
-				var table = $('#gametable')
+				var table = $('#gametable');
+				shuffle(r, c, 15);	
 			}
 		
 	});
@@ -93,13 +94,9 @@ $(document).ready(function(){
   		// 39 right
   		// 40 down
   		if (e.which >= 37 && e.which <= 40) {
-  			table = document.getElementById('gametable');
-			tmp = table.childNodes[0].childNodes[0];
-			tmp = tmp.cloneNode(true);
-			
-			parnt = table.childNodes[0];
-			parnt.replaceChild(table.childNodes[0].childNodes[1], table.childNodes[0].childNodes[0]);
-			parnt.insertBefore(tmp, table.childNodes[0].childNodes[0].nextSibling);
+  			var r = $('#rows').val();
+			var c = $('#columns').val();
+			shuffle(r,c,15);
   		}
 
     });
@@ -173,7 +170,8 @@ $(document).ready(function(){
 						ordre[grisR][grisC] = ordre[grisR - 1][grisC];
 						ordre[grisR - 1][grisC] = tmp;
 						
-						swap(grisC + 1 + c*(grisR), grisC + 1 + c*(grisR - 1))
+						swap(grisC + 1 + c*(grisR), grisC + 1 + c*(grisR - 1));
+						grisR+=-1;
 					}
 				}
 				else if (x == 1){
@@ -184,7 +182,8 @@ $(document).ready(function(){
 						ordre[grisR][grisC] = ordre[grisR][grisC + 1];
 						ordre[grisR - 1][grisC] = tmp;
 						
-						swap(grisC + c*(grisR), grisC + 1 + c*(grisR))
+						swap(grisC + c*(grisR), grisC + 1 + c*(grisR));
+						grisC+=1;
 					}
 				}
 				else if (x == 2){
@@ -195,7 +194,8 @@ $(document).ready(function(){
 						ordre[grisR][grisC] = ordre[grisR + 1][grisC];
 						ordre[grisR + 1][grisC] = tmp;
 						
-						swap(grisC + c*(grisR), grisC + c*(grisR + 1))
+						swap(grisC + c*(grisR), grisC + c*(grisR + 1));
+						grisR+=1;
 					}
 				}
 				else if (x == 3){
@@ -206,7 +206,8 @@ $(document).ready(function(){
 						ordre[grisR][grisC] = ordre[grisR][grisC - 1];
 						ordre[grisR][grisC - 1] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC - 1 + c*(grisR))
+						swap(grisC + c*(grisR), grisC - 1 + c*(grisR));
+						grisC+=-1;
 					}
 				}
 			}
@@ -310,12 +311,12 @@ $(document).ready(function(){
 		return table
 	}
 
-
+/*
 	var move = function (e) {
 		$("#element1").before($("#element2"));
 		$("#element1").after($("#element2"));
 	}
-
+*/
 
 window.addEventListener("keydown", function(e) {
     // space, page up, page down and arrow keys:
