@@ -26,7 +26,6 @@ $(document).ready(function(){
 			if (confirm("La partie va être réinitialisée, voulez-vous continuez?")) {
 
 
-				$('#tablewrapper *').remove();
 				$('#score').text('0');
 				var img = $('#thumbnail').get(0);
 
@@ -37,41 +36,24 @@ $(document).ready(function(){
 				var width = Math.round(img.width/c*5)+'px';
 				var height= Math.round(img.height/r*5)+'px';
 				var back = 'url('+url+')';
-				var table = generateGrid(c,r,url);
-				shuffle(table, r, c, 15);
-				$('#tablewrapper').append(table);
-
-				$('#tablewrapper td').css({'width':width,
-					'height':height,
-					'background-image':back});
-				$('#tablewrapper span').addClass('hidden');
-
-
-
-				$('#tablewrapper table').attr('id', 'gametable')		
+				var table = $('#gametable')
+				shuffle(table, r, c);		
 					}
 				}
 				else {
-					$('#tablewrapper *').remove();
+					
+				$('#score').text('0');
 				var img = $('#thumbnail').get(0);
+
 				var r = $('#rows').val();
 				var c = $('#columns').val();
+				
+				
 				var width = Math.round(img.width/c*5)+'px';
 				var height= Math.round(img.height/r*5)+'px';
 				var back = 'url('+url+')';
-				var table = generateGrid(c,r,url);
-				shuffle(table, r, c, 15);
-				$('#tablewrapper').append(table);
-
-				$('#tablewrapper td').css({'width':width,
-					'height':height,
-					'background-image':back});
-				$('#tablewrapper span').addClass('hidden');
-
-
-
-				$('#tablewrapper table').attr('id', 'gametable')		
-				
+				var table = $('#gametable')
+				shuffle(table, r, c);
 				}
 		
 	});
@@ -111,14 +93,93 @@ $(document).ready(function(){
 		*/
 	}
 	
+		var swap = function(a,b) {
+		var tmp1, tmp2;
+		tmp1 = $("span:contains('" + a + "')").parent().html();
+		tmp2 = $("span:contains('" + b + "')").parent().html();
+		
+		$("span:contains('" + a + "')").parent().html(tmp2);
+		$("span:contains('" + b + "')").parent().html(tmp1);
+	}
+		
+		
+	var shuffle = function(r,c,v) {
+		var grisR = r-1;
+		var grisC = c-1;
+		var ordre = new Array(r);
+		var i,j;
+		var tmp, parnt;
+		
+		for (i=0; i<r; i++) {
+			ordre[i] = new Array(c);
+		}
+		
+		for (i=0; i<r; i++) {
+			for (j =0; j<c; j++) {
+		 		ordre[i][j] = (j+1) + i*c;
+			}
+		}
+		
+		for(var i = 0; i < 1; i++) {
+			var check = true;
+			// 0 = up, 1 = right, 2 = down, 3 = left
+			while (check) {
+				x = Math.floor(Math.random() * 4);
+				if (x = 0){
+					if (grisR - 1 > 0) {
+						check = false;
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR - 1][grisC];
+						ordre[grisR - 1][grisC] = tmp;
+						
+						swap(grisC + 1 + c*(grisR), grisC + 1 + c*(grisR - 1))
+					}
+				}
+				else if (x = 1){
+					if (grisC + 1 < c) {
+						check = false;
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR][grisC + 1];
+						ordre[grisR - 1][grisC] = tmp;
+						
+						swap(grisC + c*(grisR), grisC + 1 + c*(grisR))
+					}
+				}
+				else if (x = 2){
+					if (grisR + 1 < r) {
+						check = false;
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR + 1][grisC];
+						ordre[grisR + 1][grisC] = tmp;
+						
+						swap(grisC + c*(grisR), grisC + c*(grisR + 1))
+					}
+				}
+				else if (x = 3){
+					if (grisC - 1 > 0) {
+						check = false;
+						
+						tmp = ordre[grisR][grisC];
+						ordre[grisR][grisC] = ordre[grisR][grisC - 1];
+						ordre[grisR][grisC - 1] = tmp;
+						
+						swap(grisC + c*(grisR), grisC - 1 + c*(grisR))
+					}
+				}
+			}
+		}
+	}
 
-	var shuffle = function(table,r,c, v) {
+	//var shuffle = function(table,r,c, v) {
 		/*
 		@param table : table that the cells will be shuffled
 		@param v : float between 0 and 1 w,hich determines the probability each cell will be shuffled
 		return: shuffled table
 		*/
-		var grisR = r-1;
+	/*	var grisR = r-1;
 		var grisC = c-1;
 		var ordre = new Array(r);
 		var x, y;
@@ -131,8 +192,8 @@ $(document).ready(function(){
 			for (j =0; j<c; j++) {
 		 		ordre[i][j] = (j+1) + i*c;
 			};
-		};
-
+		}; 
+	
 
 		for(var i = 0; i < 1; i++) {
 			/*
@@ -153,7 +214,7 @@ $(document).ready(function(){
 			
 			parnt = table.childNodes[grisR].childNodes[grisC].parentNode;
 			parnt.replaceChild(table.childNodes[grisR+x].childNodes[grisC+y], table.childNodes[grisR].childNodes[grisC])
-			*/
+			
 			//table.childNodes[grisR].childNodes[grisC] = table.childNodes[grisR+x].childNodes[grisC+y];
 			
 			tmp = table.childNodes[0].childNodes[0];
@@ -173,6 +234,7 @@ $(document).ready(function(){
 
  		//return table;
 	}
+	*/
 
 
 	var winCheck = function(table) {
