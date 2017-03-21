@@ -25,35 +25,32 @@ $(document).ready(function(){
 			
 			if (confirm("La partie va être réinitialisée, voulez-vous continuez?")) {
 
-
+				$('#tablewrapper *').remove();
+		
 				$('#score').text('0');
 				var img = $('#thumbnail').get(0);
-
 				var r = $('#rows').val();
 				var c = $('#columns').val();
-				
-				
 				var width = Math.round(img.width/c*5)+'px';
 				var height= Math.round(img.height/r*5)+'px';
 				var back = 'url('+url+')';
-				var table = $('#gametable').get(0);
-				shuffle(r, c, 15);		
+
+				$('#tablewrapper').append(generateGrid(c,r,url));
+
+				$('#tablewrapper td').css({'width':width,
+					'height':height,
+					'background-image':back});
+				$('#tablewrapper span').addClass('hidden');
+				$('#tablewrapper table').attr('id', 'gametable')
+				shuffle(r, c, r*c*2);		
 					}
 				}
 				else {
 					
 				$('#score').text('0');
-				var img = $('#thumbnail').get(0);
-
 				var r = $('#rows').val();
 				var c = $('#columns').val();
-				
-				
-				var width = Math.round(img.width/c*5)+'px';
-				var height= Math.round(img.height/r*5)+'px';
-				var back = 'url('+url+')';
-				var table = $('#gametable');
-				shuffle(r, c, 15);	
+				shuffle(r, c, r*c*2);	
 			}
 		
 	});
@@ -94,9 +91,7 @@ $(document).ready(function(){
   		// 39 right
   		// 40 down
   		if (e.which >= 37 && e.which <= 40) {
-  			var r = $('#rows').val();
-			var c = $('#columns').val();
-			shuffle(r,c,15);
+  			//TODO
   		}
 
     });
@@ -138,7 +133,11 @@ $(document).ready(function(){
 	var shuffle = function(r,c,v) {
 		var grisR = r-1;
 		var grisC = c-1;
-		
+		var pos = r*c-1;
+		var gris = $("span.case:contains('" + pos + "')").parent();
+		gris.css('background-image','none');
+		gris.addClass('grey-tile');
+		gris.attr('id', 'gris');		
 		console.log("allo" + grisR + grisC + "\n");
 		var ordre = new Array(r);
 		var i,j;
