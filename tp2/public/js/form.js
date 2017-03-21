@@ -53,8 +53,7 @@ $(document).ready(function(){
 				var height= Math.round(img.height/r*5)+'px';
 				var back = 'url('+url+')';
 				var table = $('#gametable')
-				shuffle(table, r, c);
-				}
+			}
 		
 	});
 
@@ -82,9 +81,31 @@ $(document).ready(function(){
 
 
 		$('#tablewrapper table').attr('id', 'gametable')
-		
+		//shuffle(r, c, 10);
+		// swap(1,4);
 		
 	});
+	
+	$(document).keydown(function(e) {
+  		console.log(e.which);
+  		// 37 left
+  		// 38 up
+  		// 39 right
+  		// 40 down
+  		if (e.which >= 37 && e.which <= 40) {
+  			table = document.getElementById('gametable');
+			tmp = table.childNodes[0].childNodes[0];
+			tmp = tmp.cloneNode(true);
+			
+			parnt = table.childNodes[0];
+			parnt.replaceChild(table.childNodes[0].childNodes[1], table.childNodes[0].childNodes[0]);
+			parnt.insertBefore(tmp, table.childNodes[0].childNodes[0].nextSibling);
+  		}
+
+    });
+
+	$('td').click();
+});
 
 	var gameActions = function() {
 		/*
@@ -93,23 +114,39 @@ $(document).ready(function(){
 		*/
 	}
 	
-		var swap = function(a,b) {
-		var tmp1, tmp2;
-		tmp1 = $("span:contains('" + a + "')").parent().html();
-		tmp2 = $("span:contains('" + b + "')").parent().html();
+	var swap = function(a,b) {
+		var span1 = $("span.case:contains('" + a + "')");
+		var span2 = $("span.case:contains('" + b + "')");
 		
-		$("span:contains('" + a + "')").parent().html(tmp2);
-		$("span:contains('" + b + "')").parent().html(tmp1);
+		var style1, style2;
+		style1 = span1.parent().attr("style");
+		style2 = span2.parent().attr("style");
+		
+		span1.text(b);
+		span2.text(a);
+		
+		span1.parent().attr("style", style2);
+		span2.parent().attr("style", style1);
+		
+		
+		
+		// tmp1 = $("span:contains('" + a + "')").parent().html();
+// 		tmp2 = $("span:contains('" + b + "')").parent().html();
+//
+// 		$("span:contains('" + a + "')").parent().html(tmp2);
+// 		$("span:contains('" + b + "')").parent().html(tmp1);
 	}
 		
 		
 	var shuffle = function(r,c,v) {
 		var grisR = r-1;
 		var grisC = c-1;
+		
+		console.log("allo" + grisR + grisC + "\n");
 		var ordre = new Array(r);
 		var i,j;
 		var tmp, parnt;
-		
+		var x;
 		for (i=0; i<r; i++) {
 			ordre[i] = new Array(c);
 		}
@@ -120,13 +157,16 @@ $(document).ready(function(){
 			}
 		}
 		
-		for(var i = 0; i < 1; i++) {
+		for(var i = 0; i < v; i++) {
 			var check = true;
 			// 0 = up, 1 = right, 2 = down, 3 = left
 			while (check) {
+				
 				x = Math.floor(Math.random() * 4);
-				if (x = 0){
-					if (grisR - 1 > 0) {
+				console.log(x);
+				
+				if (x == 0){
+					if (grisR - 1 >= 0) {
 						check = false;
 						
 						tmp = ordre[grisR][grisC];
@@ -136,7 +176,7 @@ $(document).ready(function(){
 						swap(grisC + 1 + c*(grisR), grisC + 1 + c*(grisR - 1))
 					}
 				}
-				else if (x = 1){
+				else if (x == 1){
 					if (grisC + 1 < c) {
 						check = false;
 						
@@ -147,7 +187,7 @@ $(document).ready(function(){
 						swap(grisC + c*(grisR), grisC + 1 + c*(grisR))
 					}
 				}
-				else if (x = 2){
+				else if (x == 2){
 					if (grisR + 1 < r) {
 						check = false;
 						
@@ -158,15 +198,15 @@ $(document).ready(function(){
 						swap(grisC + c*(grisR), grisC + c*(grisR + 1))
 					}
 				}
-				else if (x = 3){
-					if (grisC - 1 > 0) {
+				else if (x == 3){
+					if (grisC - 1 >= 0) {
 						check = false;
 						
 						tmp = ordre[grisR][grisC];
 						ordre[grisR][grisC] = ordre[grisR][grisC - 1];
 						ordre[grisR][grisC - 1] = tmp;
 						
-						swap(grisC + c*(grisR), grisC - 1 + c*(grisR))
+						//swap(grisC + c*(grisR), grisC - 1 + c*(grisR))
 					}
 				}
 			}
@@ -252,9 +292,11 @@ $(document).ready(function(){
 
 			for (var j = 1; j <= c; j++) {
 				var td = document.createElement('td');
-				var pos = ((j)*100/(c)-(100/c)+'% ')+((i)*100/(r)-(100/r)+'%');
+				var pos = (j * 100/c - 100/c) + '% ' + (i*100/r - 100/r) + '%';
+				
 				td.style.backgroundPosition= pos;
 				span=document.createElement('span');
+				span.classList.add('case')
 				span.appendChild(document.createTextNode(compteur));
 				td.appendChild(span);
 				compteur++;
@@ -268,34 +310,11 @@ $(document).ready(function(){
 		return table
 	}
 
-	$(document).keydown(function(e) {
-  		console.log(e.which);
-  		// 37 left
-  		// 38 up
-  		// 39 right
-  		// 40 down
-  		if (e.which >= 37 && e.which <= 40) {
-  			table = document.getElementById('gametable');
-			tmp = table.childNodes[0].childNodes[0];
-			tmp = tmp.cloneNode(true);
-			
-			parnt = table.childNodes[0];
-			parnt.replaceChild(table.childNodes[0].childNodes[1], table.childNodes[0].childNodes[0]);
-			parnt.insertBefore(tmp, table.childNodes[0].childNodes[0].nextSibling);
-  		}
-
-  });
-
-	$('td').click();
-
 
 	var move = function (e) {
 		$("#element1").before($("#element2"));
 		$("#element1").after($("#element2"));
 	}
-
-
-});
 
 
 window.addEventListener("keydown", function(e) {
