@@ -40,7 +40,48 @@ var ingame = false;
 				var back = 'url('+url+')';
 
 				$('#tablewrapper').append(generateGrid(c,r,url));
+				$("td").click(function(){
+					console.log("allo");
 
+					var check, tmp
+					var id = $(this).attr("id");
+					var r = $('#rows').val();
+					var c = $('#columns').val();
+					var caseR, caseC;
+					for (i = 0; i<r; i++) {
+						for (j = 0; j<c; j++) {
+							if(ordre[i][j] == id){
+								caseR = i; 
+								caseC = j;
+							}
+						}
+					}
+					if(grisC - caseC == 0 || grisR - caseR == 0) {
+						//case gauche
+						if(grisC - caseC == 1) {
+							move(37);
+						}
+
+						//gris bas
+						if(grisR - caseR == -1) {
+							move(40);
+						}
+
+						//case droite
+						if(grisC - caseC == -1) {
+							move(39);
+						}
+
+						//gris haut
+						if(grisR - caseR == 1) {
+							move(38);
+						}
+
+					}
+					$('#score').text(compteur);
+					winCheck();
+				});
+				
 				$('#tablewrapper td').css({'width':width,
 					'height':height,
 					'background-image':back});
@@ -55,11 +96,16 @@ var ingame = false;
 				var r = $('#rows').val();
 				var c = $('#columns').val();
 				shuffle(r, c, r*c*r*c);	
+				
+				
+				
 				ingame = true;
+				
+				
 			}
 		
 	});
-
+	
 	$('#afficher').click(function() {
 		ingame=true;
 		$('#tablewrapper *').remove();
@@ -83,9 +129,8 @@ var ingame = false;
 
 
 
-		$('#tablewrapper table').attr('id', 'gametable')
-		//shuffle(r, c, 10);
-		// swap(1,4);
+		$('#tablewrapper table').attr('id', 'gametable');
+
 		
 	});
 	
@@ -100,21 +145,12 @@ var ingame = false;
   		}
 
     });
-
-	$('td').click();
+	
 });
+	
 
-	var gameActions = function() {
-		/*
-		Handler for mouse and keyboards inputs for the game. 
-		Possible actions = {'Up', 'Right', 'Down', 'Left'}
-		*/
-	}
 	
 	var swap = function(a,b) {
-		//a++;
-		//b++;
-		console.log (" " + a + " " + b +"\n");
 		var td1 = $("#" + a);
 		var td2 = $("#" + b);
 		
@@ -141,14 +177,7 @@ var ingame = false;
 
 		td1[0].className = class2;
 		td2[0].className = class1;
-		console.log(td1.attr("class"), class2, td2.attr("class"), class1);
 		
-		
-		// tmp1 = $("span:contains('" + a + "')").parent().html();
-// 		tmp2 = $("span:contains('" + b + "')").parent().html();
-//
-// 		$("span:contains('" + a + "')").parent().html(tmp2);
-// 		$("span:contains('" + b + "')").parent().html(tmp1);
 	}
 		
 		
@@ -159,8 +188,6 @@ var ingame = false;
 		var gris = $("#" + pos);
 		gris.css('background-image','none');
 		gris.addClass('grey-tile');
-		//gris.attr('id', 'gris');		
-		//console.log("allo" + grisR + grisC + "\n");
 		
 		var tmp, parnt;
 		var x;
@@ -179,7 +206,6 @@ var ingame = false;
 			while (check) {
 				
 				x = Math.floor(Math.random() * 4);
-				//console.log(x);
 				
 				if (x == 0){
 					if (grisR - 1 >= 0) {
@@ -191,7 +217,6 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR - 1][grisC];
 						ordre[grisR - 1][grisC] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC + c*(grisR - 1));
 						grisR+=-1;
 					}
 				}
@@ -205,7 +230,6 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR][grisC + 1];
 						ordre[grisR][grisC + 1] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC + 1 + c*(grisR));
 						grisC+=1;
 					}
 				}
@@ -219,7 +243,6 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR + 1][grisC];
 						ordre[grisR + 1][grisC] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC + c*(grisR + 1));
 						grisR+=1;
 					}
 				}
@@ -233,76 +256,14 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR][grisC - 1];
 						ordre[grisR][grisC - 1] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC - 1 + c*(grisR));
 						grisC+=-1;
 					}
 				}
 			}
 		}
 	}
-
-	//var shuffle = function(table,r,c, v) {
-		/*
-		@param table : table that the cells will be shuffled
-		@param v : float between 0 and 1 w,hich determines the probability each cell will be shuffled
-		return: shuffled table
-		*/
-	/*	var grisR = r-1;
-		var grisC = c-1;
-		var ordre = new Array(r);
-		var x, y;
-		var tmp, parnt;
-		var i,j;
-		for (i=0; i<r; i++) {
-			ordre[i] = new Array(c);
-		}
-		for (i=0; i<r; i++) {
-			for (j =0; j<c; j++) {
-		 		ordre[i][j] = (j+1) + i*c;
-			};
-		}; 
-	
-
-		for(var i = 0; i < 1; i++) {
-			/*
-			x = Math.floor(Math.random() * 2);
-			if (x == 0) x--;
-			y = Math.floor(Math.random() * 2);
-			if (y == 0) x--;
 			
-			if ((0 <= x + grisR && x + grisR < r) && 0 <= y + grisC && y + grisC < c) {
-
-			tmp = ordre[grisR][grisC];
-			ordre[grisR][grisC] = ordre[grisR + x][grisC + y];
-			ordre[grisR + x][grisC + y] = tmp;
-			
-			console.log(table.childNodes[grisR].childNodes[grisC]);
-			
-			tmp = table.childNodes[grisR].childNodes[grisC];
-			
-			parnt = table.childNodes[grisR].childNodes[grisC].parentNode;
-			parnt.replaceChild(table.childNodes[grisR+x].childNodes[grisC+y], table.childNodes[grisR].childNodes[grisC])
-			
-			//table.childNodes[grisR].childNodes[grisC] = table.childNodes[grisR+x].childNodes[grisC+y];
-			
-			tmp = table.childNodes[0].childNodes[0];
-			save = table.childNodes[0].childNodes[3];
-			tmp = tmp.cloneNode(true);
-			
-			parnt = table.childNodes[0];
-			parnt.replaceChild(table.childNodes[0].childNodes[1], table.childNodes[0].childNodes[0]);
-			parnt.insertBefore(tmp, table.childNodes[0].childNodes[0].nextSibling);
-			//parnt.replaceChild(tmp, table.childNodes[0].childNodes[1]);
-			
-			//table.childNodes[grisR+x].childNodes[grisC+y] = tmp;
-			//grisR = grisR+x;
-			//grisC = grisC+y;
-			//}
-		}
-
- 		//return table;
-	}
-	*/
+		
 
 
 	var winCheck = function() {
@@ -360,7 +321,6 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR][grisC - 1];
 						ordre[grisR][grisC - 1] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC - 1 + c*(grisR));
 						grisC+=-1;
 						compteur+=1;
 					}
@@ -375,7 +335,6 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR - 1][grisC];
 						ordre[grisR - 1][grisC] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC + c*(grisR - 1));
 						grisR+=-1;
 						compteur+=1;
 					}
@@ -390,7 +349,6 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR][grisC + 1];
 						ordre[grisR][grisC + 1] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC + 1 + c*(grisR));
 						grisC+=1;
 						compteur+=1;
 					}
@@ -405,7 +363,6 @@ var ingame = false;
 						ordre[grisR][grisC] = ordre[grisR + 1][grisC];
 						ordre[grisR + 1][grisC] = tmp;
 						
-						//swap(grisC + c*(grisR), grisC + c*(grisR + 1));
 						grisR+=1;
 						compteur+=1;
 					}
