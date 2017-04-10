@@ -51,9 +51,9 @@ nav > ul a:hover {
 
 }
 
-main > div {width:90%; margin:auto;}
+#main > div {width:90%; margin:auto;}
 
-header, footer, form, header a {
+#header, #footer, form, #header a {
 	color:white;
 	width: 100%;
 	text-align: center;
@@ -62,7 +62,7 @@ header, footer, form, header a {
 	background-color:grey;
 }
 
-footer {
+#footer {
 		margin-top:20%;
 		margin-bottom:0;
 		padding:1%;
@@ -137,7 +137,7 @@ td {
 	color:grey;
 }
 
-main {
+#main {
 	width: 80%;
 	text-align: justify;
 	margin: auto;
