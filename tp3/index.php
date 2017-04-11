@@ -4,10 +4,10 @@ include('./php/partials.php');
 if(isset($_POST['submit_form'])){
 	
 		
-		$db_host='localhost';
-		$db_name='relis_test';
-		$db_user='root';
-		$db_pass="duboeuf1";
+		$db_host='';
+		$db_name='';
+		$db_user='';
+		$db_pass="";
 		
 		$result_array=array();
 
