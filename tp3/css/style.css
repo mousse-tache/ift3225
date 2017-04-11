@@ -12,7 +12,7 @@ body {
 	font-size: 100%;
 	border-radius: 10px;
 	text-align: justify;
-	background-color:red;
+	background-color:black;
 
 }
 
@@ -80,7 +80,6 @@ form {
 }
 input {
 	border-radius: 0;
-	color:white;
 	border-style:solid;
 }
 
@@ -91,48 +90,6 @@ input {
 	margin-right:45%;
 	margin-top:1%;
 
-}
-
-#brassertuiles, #afficher {
-	margin:1%;
-	padding: 1%;
-	color:white;
-	background-color:grey;
-}
-
-table {
-	margin: auto;
-	border-spacing: 0;
-    border-collapse: collapse;
-}
-tr {margin: 0; padding: 0; 
-	border-spacing: 0;
-    border-collapse: collapse;
-}
-td {
-	display: inline-block;
-	border: none;
-	height:100%;
-	margin:0;
-	padding:0;
-	color:white;
-	text-shadow: 4px black;
-	text-align: right;
-	
-
-}
-
-#tablewrapper {
-	width:70%;
-	margin: auto;
-	overflow: hidden;
-}
-
-.hidden {display: none;}
-
-.grey-tile {
-	background-color:grey;
-	color:grey;
 }
 
 main {

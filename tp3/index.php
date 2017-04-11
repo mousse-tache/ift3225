@@ -11,9 +11,18 @@ if(isset($_POST['submit_form'])){
 		
 		$result_array=array();
 
-		head();
-		login();
-		tail();
+		$user=$_POST['user'];
+		$password=$_POST['password'];
+
+		if ($user) {
+			echo "Tentative de connexion";
+		}
+		else{	
+			head();
+			login();
+			tail();
+		}
+
 
 
 		/*
