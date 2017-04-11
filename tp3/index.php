@@ -1,7 +1,6 @@
 <?php
 include ('./php/login.php');
 include('./php/partials.php');
-echo phpinfo();
 if(isset($_POST['submit_form'])){
 	
 		

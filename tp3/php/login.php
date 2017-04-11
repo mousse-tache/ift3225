@@ -6,8 +6,7 @@ function login(){?>
 			 
             <div>
 				
-			<div>	
-			 <h2>Paper information</h2>
+			<div>
 			 </div> 
                     	<br/>
 				
@@ -42,7 +41,7 @@ function login(){?>
 			<div class="form-group">
 			<div class="col-md-12 col-sm-12 col-xs-12 " style="text-align: center">
 			<br/>
-			<button class="btn btn-info" type="submit" name='submit_form' style="padding-left: 20px; padding-right: 20px"> Save </button>
+			<button class="btn btn-info" type="submit" name='submit_form' style="padding-left: 20px; padding-right: 20px"> Se connecter </button>
 			</div>
 			</div>
 		
