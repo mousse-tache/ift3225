@@ -10,9 +10,9 @@ body {
 	width:100%;
 	margin: auto;
 	font-size: 100%;
-	background-color: white;
 	border-radius: 10px;
 	text-align: justify;
+	background-color:black;
 
 }
 
@@ -51,18 +51,17 @@ nav > ul a:hover {
 
 }
 
-#main > div {width:90%; margin:auto;}
+main > div {width:90%; margin:auto;}
 
-#header, #footer, form, #header a {
-	color:white;
+header, footer, form, header a {
+	color:black;
 	width: 100%;
 	text-align: center;
 	margin:auto;
 	padding:10px;
-	background-color:grey;
 }
 
-#footer {
+footer {
 		margin-top:20%;
 		margin-bottom:0;
 		padding:1%;
@@ -81,8 +80,6 @@ form {
 }
 input {
 	border-radius: 0;
-	color:white;
-	background-color:grey;
 	border-style:solid;
 }
 
@@ -95,49 +92,7 @@ input {
 
 }
 
-#brassertuiles, #afficher {
-	margin:1%;
-	padding: 1%;
-	color:white;
-	background-color:grey;
-}
-
-table {
-	margin: auto;
-	border-spacing: 0;
-    border-collapse: collapse;
-}
-tr {margin: 0; padding: 0; 
-	border-spacing: 0;
-    border-collapse: collapse;
-}
-td {
-	display: inline-block;
-	border: none;
-	height:100%;
-	margin:0;
-	padding:0;
-	color:white;
-	text-shadow: 4px black;
-	text-align: right;
-	
-
-}
-
-#tablewrapper {
-	width:70%;
-	margin: auto;
-	overflow: hidden;
-}
-
-.hidden {display: none;}
-
-.grey-tile {
-	background-color:grey;
-	color:grey;
-}
-
-#main {
+main {
 	width: 80%;
 	text-align: justify;
 	margin: auto;
