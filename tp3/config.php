@@ -5,6 +5,6 @@
 // config.php
 $db_user = "neveuwil";
 $db_password = "CSTRk5c8UGW_jC";
-$db_host = "localhost:8888";
+$db_host = "mysql.iro.umontreal.ca";
 $db_name = "neveuwil_3225";
 ?>
