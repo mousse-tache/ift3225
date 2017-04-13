@@ -114,3 +114,18 @@ main {
 .plagehoraire input {
 	right:0;
 }
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: left;
+	
+}
+
+
+table, td, th {
+	border: 1px solid black;
+}
+
+
+td,th {width: 30%;}
