@@ -3,9 +3,12 @@
 <?php
 // opendb.php
 
-$conn = mysql_connect( $db_host, $db_user, $db_password);
+$conn = mysqli_connect( $db_host, $db_user, $db_password,$db_name);
 if (!$conn) 
   die("probleme de connection ". mysql_error());
 
-mysql_select_db($db_name) or die("probleme de selection " . mysql_error());
+if (mysqli_connect_errno())
+  {
+  die("Failed to connect to MySQL: ". mysqli_connect_error());
+  }
 ?>

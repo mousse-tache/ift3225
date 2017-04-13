@@ -1,4 +1,5 @@
-<?php if (isset($_GET['source'])) die(highlight_file(__FILE__, 1)); ?>
+
+<?php //if (isset($_GET['source'])) die(highlight_file(__FILE__, 1)); ?>
 
 
 <?php
@@ -9,9 +10,9 @@
 // include("config.php");
 // include("opendb.php");
 //
-	$surnom=$_POST['surnom'];
-	$password=$_POST['password'];
-	echo "$surnom $password !";
+// $surnom=$_POST['surnom'];
+// $password=$_POST['password'];
+echo "surnom password !";
 //
 // //$sql="SELECT * FROM $tbl_name WHERE username='$surnom' and password='$password'";
 // $res=mysql_query("SELECT * FROM $tbl_name WHERE username='$surnom' and password='$password';", $conn);
