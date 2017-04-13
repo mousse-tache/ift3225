@@ -19,10 +19,8 @@ if(isset($_POST['submit_form'])){
 		echo '<h2 class="error">Inscription effectuée</h2>';
 		
 		include("config.php");
-		echo '<h2 class="error">Inscription effectuée</h2>';
 		
 		include("opendb.php");
-		echo '<h2 class="error">Inscription effectuée</h2>';
 		
 		$table_name = 'Users';
 		
@@ -67,3 +65,4 @@ if(isset($_POST['submit_form'])){
 }
 mysqli_free_result($res);
 include('closedb.php');
+?>
