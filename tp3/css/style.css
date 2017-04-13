@@ -102,3 +102,15 @@ main {
 	color:red;
 	border: 1px black solid;
 }
+
+.plagehoraire {
+	border:2px black solid;
+	width:60%;
+	padding:1%;
+	margin:auto;
+	text-align: justify;
+}
+
+.plagehoraire input {
+	right:0;
+}

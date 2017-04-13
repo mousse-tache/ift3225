@@ -73,7 +73,7 @@ function insc($user,$firstname,$name){?>
 						<label class="control-label" for="first-name">
 						Surnom
 						</label>
-						<div >
+						<div>
 						
 						<input type="text" name="user"  id="user" class="form-control"  style="margin-bottom:1px" value="<?php echo $user;?>">
 									

@@ -43,3 +43,56 @@ function tail(){?>
  </body>
 </html>
 <?php }?>
+<?php
+function past($user){?>
+  <div class="plagehoraire">
+    <ul>
+
+  <?php
+
+      for ($i=4; $i > 0; $i--) { 
+        echo "<li>Réservation de la semaine ".$i."</li>";
+      }
+   ?>
+   </ul>
+  </div>
+<?php }?>
+<?php
+function terrains(){?>
+  
+<?php }?>
+<?php
+function showreserve(){?>
+  <div class="plagehoraire">
+      <div>
+      <label>Plage horaire: </label>
+  
+    <select id="plage" name="plage">
+    <?php 
+        for ($i=6; $i < 22; $i++) { 
+            echo '<option value="'.$i.'">'.$i.'h</option>';
+          }  
+
+     ?> 
+      </select>
+      </div>
+      <div>
+      <label>Terrain: </label>
+
+    <select id="terrain" name="terrain">
+    <?php 
+        for ($i=1; $i < 6; $i++) { 
+            echo '<option value="'.$i.'">Terrain '.$i.'</option>';
+          }  
+
+     ?> 
+      </select>
+      </div>
+      <div>
+      <input type="submit" name="<?php echo 'plage'.$i?>" value="Réserver">
+      </div>
+  <div>
+
+  </div>
+  </div>
+<?php }?>
