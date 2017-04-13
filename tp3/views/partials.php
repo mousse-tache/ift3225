@@ -59,7 +59,35 @@ function past($user){?>
 <?php }?>
 <?php
 function terrains(){?>
+  <div class="plagehoraire">
+  <table>
+    <th>Terrain</th>
+
+    <th>Heure</th>
+
+    <th>Disponibilité</th>
   
+  <?php 
+
+  for ($i=1; $i < 6; $i++) { 
+  
+    for ($j=6; $j < 22 ; $j++) { 
+        echo "
+
+          <tr>
+
+            <td>".$i."</td>
+            <td>".$j."h</td>
+            <td></td>
+
+          </tr>";
+    }
+
+  }
+  
+   ?>
+   </table>
+  </div>
 <?php }?>
 <?php
 function showreserve(){?>
@@ -89,10 +117,7 @@ function showreserve(){?>
       </select>
       </div>
       <div>
-      <input type="submit" name="<?php echo 'plage'.$i?>" value="Réserver">
+      <input type="submit" name="reserver" value="Réserver">
       </div>
-  <div>
-
-  </div>
   </div>
 <?php }?>

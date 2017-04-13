@@ -1,37 +1,57 @@
 <?php
 function admin(){?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Réservation de terrain</title>
+<h2>Administration du système</h2>
+<div class="plagehoraire">
+      <div>
+      <label>Plage horaire: </label>
+  
+    <select id="plage" name="plage">
+    <?php 
+        for ($i=6; $i < 22; $i++) { 
+            echo '<option value="'.$i.'">'.$i.'h</option>';
+          }  
 
-    <link href="css/style.css" rel="stylesheet">
-   </head>
+     ?> 
+      </select>
+      </div>
+      <div>
+      <label>Terrain: </label>
 
-  <body style="background:#F7F7F7;">
+    <select id="terrain" name="terrain">
+    <?php 
+        for ($i=1; $i < 6; $i++) { 
+            echo '<option value="'.$i.'">Terrain '.$i.'</option>';
+          }  
 
-    <main>
-      <?php if($user) {
-        echo "<h3>Bienvenue " . $user . "!</h3>"; 
-        }
-      ?>
-      <nav>
-        <ul>
-          
-          <?php 
-          if($admin) {
-            echo '<li><a href="./admin.php">Administration</a></li>';
-            }
-          if($user) {
-            echo '<li><a href="./reserve.php">Réservations</a></li>';
-          }
-             ?>
-        </ul>
-      </nav>
+     ?> 
+      </select>
+      </div>
+      <div>
+      <input type="submit" name="montrer" value="Montrer disponibilités">
+      </div>
+  </div>
+
+<div class="plagehoraire">
+<?php 
+
+  for ($i=0; $i < 1; $i++) { 
+    echo "<div>";
+    echo "<p>";
+    echo "User ".$i;
+    echo "<ul>";
+
+    for ($j=0; $j < 2; $j++) { 
+      echo "<li>";
+      echo "Réservation".$j;
+      echo "</li>";
+    }
+
+    echo "</ul>";
+    echo "</p>";
+    echo "</div>";
+  }
+?>
+</div>
+
 <?php }?>
