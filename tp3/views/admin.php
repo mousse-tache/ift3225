@@ -33,6 +33,16 @@ function admin(){?>
   </div>
 
 <div class="plagehoraire">
+  <h3>Réservations des joueurs</h3>
+  <label>Jour du mois:</label>
+  <select>
+  <?php 
+        for ($i=5; $i < 31; $i=$i+7) { 
+            echo '<option value="'.$i.'">'.$i.'</option>';
+          }  
+
+     ?> 
+  </select>
 <?php 
 
   for ($i=0; $i < 1; $i++) { 
