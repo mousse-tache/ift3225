@@ -58,7 +58,7 @@ function login(){?>
     
 <?php }?>
 <?php
-function insc(){?>
+function insc($user,$firstname,$name){?>
 
             <form action="inscription.php" method="POST">
               <h1>S'inscrire</h1><br/>
@@ -75,7 +75,7 @@ function insc(){?>
 						</label>
 						<div >
 						
-						<input type="text" name="user"  id="user" class="form-control"  style="margin-bottom:1px">
+						<input type="text" name="user"  id="user" class="form-control"  style="margin-bottom:1px" value="<?php echo $user;?>">
 									
 						</div>		
 					</div>
@@ -85,7 +85,7 @@ function insc(){?>
 						</label>
 						<div >
 						
-						<input type="text" name="firstname"  id="firstname" class="form-control"  style="margin-bottom:1px">
+						<input type="text" name="firstname"  id="firstname" class="form-control"  style="margin-bottom:1px" value="<?php echo $firstname;?>">
 									
 						</div>		
 					</div>
@@ -95,7 +95,7 @@ function insc(){?>
 						</label>
 						<div >
 						
-						<input type="text" name="name"  id="name" class="form-control"  style="margin-bottom:1px">
+						<input type="text" name="name"  id="name" class="form-control"  style="margin-bottom:1px" value="<?php echo $name;?>">
 									
 						</div>		
 					</div>

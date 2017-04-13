@@ -13,6 +13,8 @@ if(isset($_POST['submit_form'])){
 		$result_array=array();
 
 		$nuser=$_POST['user'];
+		$firstname=$_POST['firstname'];
+		$name=$_POST['name'];
 		$npassword=$_POST['password'];
 		$cpassword=$_POST['cpassword'];
 		$admin;
@@ -32,8 +34,7 @@ if(isset($_POST['submit_form'])){
 				{
 				
 			echo '<h2 class="error">Mots de passe différents!</h2>';
-			
-			insc();
+			insc($nuser,$firstname,$name);
 			tail();
 			}
 
@@ -80,7 +81,7 @@ if(isset($_POST['submit_form'])){
 	
 }else{
 	head(false,false);
-	insc();
+	insc($user,$firstname,$name);
 	tail();
 }
 
