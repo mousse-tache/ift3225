@@ -12,26 +12,30 @@ if(isset($_POST['submit_form'])){
 		
 		$result_array=array();
 
-		$user=$_POST['user'];
-		$password=$_POST['password'];
+		$nuser=$_POST['user'];
+		$npassword=$_POST['password'];
+		$cpassword=$_POST['cpassword'];
 		$admin;
 
-		if ($user=="admin") {
-			$admin=true;
-		}else{
-			$admin=false;
-		}
+		
 
-		if ($user) {
-			head($admin,$user);
-			home($user);
+		
+			head(false,false);
+			if ($cpassword==$npassword) {
+				
+			echo '<h2 class="error">Inscription effectuée</h2>';
+			
+			login();
 			tail();
-		}else{	
-			head($admin,false);
-			login($user);
+			}
+			else
+				{
+				
+			echo '<h2 class="error">Mots de passe différents!</h2>';
+			
+			insc();
 			tail();
-		}
-
+			}
 
 
 		/*
@@ -76,7 +80,7 @@ if(isset($_POST['submit_form'])){
 	
 }else{
 	head(false,false);
-	login();
+	insc();
 	tail();
 }
 

@@ -97,3 +97,8 @@ main {
 	text-align: justify;
 	margin: auto;
 }
+
+.error {
+	color:red;
+	border: 1px black solid;
+}

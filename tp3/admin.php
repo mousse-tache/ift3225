@@ -1,34 +1,25 @@
 <?php
 include ('./views/login.php');
+include ('./views/admin.php');
+include ('./views/home.php');
 include('./views/partials.php');
-include('./views/home.php');
-if(isset($_POST['submit_form'])){
-	
+if(isset($_GET['user'])){
 		
-		$db_host='';
-		$db_name='';
-		$db_user='';
-		$db_pass="";
+		$user=$_GET['user'];
 		
-		$result_array=array();
-
-		$user=$_POST['user'];
-		$password=$_POST['password'];
-		$admin;
-
 		if ($user=="admin") {
 			$admin=true;
-		}else{
-			$admin=false;
 		}
+		else {$admin=false;}
 
-		if ($user) {
+		if ($admin) {
 			head($admin,$user);
-			home($user);
+			admin($user);
 			tail();
-		}else{	
-			head($admin,false);
-			login($user);
+		}
+		else{	
+			head(false,false);
+			home($user);
 			tail();
 		}
 

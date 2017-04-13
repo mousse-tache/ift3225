@@ -1,5 +1,5 @@
 <?php
-function head(){?>
+function head($admin,$user){?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,16 +17,28 @@ function head(){?>
   <body style="background:#F7F7F7;">
 
     <main>
-      <div id="wrapper">
-        <div id="login" class=" form">
-          <section>
+      <?php if($user) {
+        echo "<h3>Bienvenue " . $user . "!</h3>"; 
+        }
+      ?>
+      <nav>
+        <ul>
+          
+          <?php 
+          if($admin) {
+            echo '<li><a href="./admin.php?user='.$user.'">Administration</a></li>';
+            }
+          if($user) {
+            echo '<li><a href="./reserve.php?user='.$user.'">Réservations</a></li>';
+          }
+             ?>
+        </ul>
+      </nav>
 <?php }?>
  <?php
 function tail(){?>
 
-          </section>
-        </div>
-    </div>
+          
     </main>
  </body>
 </html>
