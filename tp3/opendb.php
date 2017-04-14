@@ -3,7 +3,7 @@
 <?php
 // opendb.php
 
-$conn = mysqli_connect( $db_host, $db_user, $db_password,$db_name);
+$conn = mysqli_connect($db_host, $db_user, $db_password,$db_name);
 if (!$conn) 
   die("probleme de connection ". mysql_error());
 
