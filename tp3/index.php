@@ -2,7 +2,6 @@
 include('./views/login.php');
 include('./views/partials.php');
 include('./views/home.php');
-
 if(isset($_POST['submit_form'])){
 	//include("config.php");
 	//include("opendb.php");
@@ -15,60 +14,59 @@ if(isset($_POST['submit_form'])){
 	$surnom=$_POST['user'];
 	$password=$_POST['password'];
 	$table_name = 'Users';
-
-	//echo "<h2>$surnom $password</h2>";
-	$sql="SELECT * FROM Users";
-	$res=mysqli_query($conn,$sql);
-	echo "<h2>$res</h2>";
-	
+	$sql="SELECT * FROM Users"; //WHERE surnom = '".$surnom."'";
+	head();
 	if ($result = mysqli_query($conn, $sql)) {
-	    printf("Select returned %d rows.\n", mysqli_num_rows($result));
-
+		//echo "<h2>Test</h2>";
+	    //$count=mysqli_num_rows($result);
 	    /* free result set */
-		echo "<h2>res: $result</h2>";
-	    mysqli_free_result($result);
+		//echo "<h2>res: $result</h2>";
+	    //mysqli_free_result($result);
+
+		if(mysqli_num_rows($result)) {
+			while ( $range = mysqli_fetch_assoc ( $result) )  {
+			  $surnom = $range['surnom'];
+			  $nom = $range['nom'];
+			  $prenom = $range['prenom'];
+			  $admin = $range['admin'];
+			}
+			if($admin == 1) {
+	 			admin();
+	 		}
+	 		else {
+	 			home($user);
+	 		}
+			tail();
+		}
+		else{
+			//echo "<h2>$surnom $surnom $surnom</h2>";
+			head(false,false);
+			login($user);
+			tail();
+		}
+
 	}
+	else{
+			//echo "<h2>$surnom $surnom $surnom</h2>";
+			head(false,false);
+			login($user);
+			tail();
+		}
 	
 	// $res=mysqli_query($sql, $conn);
 	// $kek = mysqli_query($conn, $sql);
 	
-	echo "<h2>res: $res</h2>";
->>>>>>> 78f9e17770656b7fb785a54cd59ffab489dc4bda
-	$count = mysqli_num_rows($res);
-	echo "<h2>count: $count</h2>";
+	//echo "<h2>res: $res</h2>";
+	//$count = mysqli_num_rows($res);
+	//echo "<h2>count: $count</h2>";
 	
-	if($count >= 1) {
-		while ( $range = mysqli_fetch_assoc ( $res) )  {
-		  $surnom = $range['surnom'];
-		  $nom = $range['nom'];
-		  $prenom = $range['prenom'];
-		  $admin = $range['admin'];
-		}
-		echo "<h2>$surnom</h2>";
-		if($admin == 1) {
- 			admin();
- 		}
- 		else {
- 			home($surnom);
- 		}
-		tail();
-	}
-
-	else{
-		echo "<h2>$surnom $surnom $surnom</h2>";
-		head(false,false);
-		login($user);
-		tail();
-	}
 	include("closedb.php");
 	
 }
-
 else{
 	head(false,false);
 	login();
 	tail();
 }
 //echo "<h2> TEST </h2>"
-
 ?>
