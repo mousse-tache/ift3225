@@ -9,9 +9,9 @@ if(isset($_POST['submit_form'])){
 	$surnom=$_POST['user'];
 	$password=$_POST['password'];
 	$table_name = 'Users';
-	echo "<h2>$surnom $password</h2>";
-	$sql="SELECT * FROM $tbl_name";
-	$res=mysqli_query($sql, $conn);
+	//echo "<h2>$surnom $password</h2>";
+	$sql="SELECT * FROM Users";
+	$res=mysqli_query($conn,$sql);
 	echo "<h2>$res</h2>";
 	$count = mysqli_num_rows($res);
 	echo "<h2>$count</h2>";
@@ -24,14 +24,13 @@ if(isset($_POST['submit_form'])){
 		  $admin = $range['admin'];
 		}
 		echo "<h2>$surnom</h2>";
-		// if($admin == 1) {
-// 			admin();
-// 		}
-// 		else() {
-// 			home();
-// 		}
-		echo "<h2> $admin </h2>";
-		//admin();
+		if($admin == 1) {
+ 			admin();
+ 		}
+ 		else {
+ 			home($surnom);
+ 		}
+		tail();
 	}
 
 	else{
@@ -40,7 +39,7 @@ if(isset($_POST['submit_form'])){
 		login($user);
 		tail();
 	}
-	include("closdb.php");
+	include("closedb.php");
 	
 }
 
