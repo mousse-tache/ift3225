@@ -2,6 +2,7 @@
 include('./views/login.php');
 include('./views/partials.php');
 include('./views/home.php');
+include('./views/admin.php');
 if(isset($_POST['submit_form'])){
 	//include("config.php");
 	//include("opendb.php");
@@ -10,6 +11,7 @@ if(isset($_POST['submit_form'])){
 	$db_host = "mysql.iro.umontreal.ca";
 	$db_name = "neveuwil_3225";
 	// $mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
+	echo "ARRRRR";
 	$conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
 	$surnom=$_POST['user'];
 	$password=$_POST['password'];
@@ -44,6 +46,7 @@ if(isset($_POST['submit_form'])){
 			login($user);
 			tail();
 		}
+		mysqli_free_result($result);
 
 	}
 	else{
