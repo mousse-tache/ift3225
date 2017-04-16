@@ -6,14 +6,14 @@ html {
 }
 
 
-body {
+body, footer {
 	width:100%;
 	margin: auto;
 	font-size: 100%;
-	border-radius: 10px;
 	text-align: justify;
-	background-color:black;
-
+	background-color:#a80a0a;
+	height: 100%;
+	border: 1px solid white;
 }
 
 h1, h2 {
@@ -37,7 +37,7 @@ nav li{
 	margin:0;}
 nav > ul a {
 	display:inline-block;
-	background-color:navy;
+	background-color:red;
 	color:white;
 	padding:5%;
 	text-decoration:none;
@@ -51,8 +51,6 @@ nav > ul a:hover {
 
 }
 
-main > div {width:90%; margin:auto;}
-
 header, footer, form, header a {
 	color:black;
 	width: 100%;
@@ -62,18 +60,19 @@ header, footer, form, header a {
 }
 
 footer {
-		margin-top:20%;
-		margin-bottom:0;
+
 		padding:1%;
-		font-size: 60%;
+		font-size: 80%;
 		overflow: hidden;
+		color:white;
 
 }
+
+footer li {list-style-type: none;}
 
 form {
 	width:100%;
 	margin:auto;
-	font-size: 70%;
 	text-align:center;
 	font-style: 
 
@@ -81,6 +80,12 @@ form {
 input {
 	border-radius: 0;
 	border-style:solid;
+}
+input[type=submit] {
+	font-size:110%;
+	color:white;
+	background-color:#a80a0a;
+	border:none;
 }
 
 #thumbnail {
@@ -96,11 +101,16 @@ main {
 	width: 80%;
 	text-align: justify;
 	margin: auto;
+	background-color: white;
+	border-radius: 5px;
+	overflow: hidden;
+	margin-bottom: 10%;
 }
 
 .error {
 	color:red;
 	border: 1px black solid;
+	background-color: lightgrey;
 }
 
 .plagehoraire {

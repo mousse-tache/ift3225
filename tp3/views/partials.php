@@ -14,7 +14,7 @@ function head($admin,$user){?>
     <link href="css/style.css" rel="stylesheet">
    </head>
 
-  <body style="background:#F7F7F7;">
+  <body>
 
     <main>
       <?php if($user) {
@@ -40,6 +40,13 @@ function tail(){?>
 
           
     </main>
+    <footer>
+      <ul>
+        <li>Système de réservation DIRO</li>
+        <li>Félix Bélanger-Robillard</li>
+        <li>William Neveu</li>
+      </ul>
+    </footer>
  </body>
 </html>
 <?php }?>
