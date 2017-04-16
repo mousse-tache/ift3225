@@ -51,21 +51,31 @@ function tail(){?>
 </html>
 <?php }?>
 <?php
-function past($user){?>
+function past($user){
+
+
+  $sql="SELECT * FROM Reservations WHERE surnom='$user'";
+  $db_user = "neveuwil";
+  $db_password = "CSTRk5c8UGW_jC";
+  $db_host = "mysql.iro.umontreal.ca";
+  $db_name = "neveuwil_3225";
+  $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+  $result = mysqli_query($conn, $sql))
+
+  ?>
   <div class="plagehoraire">
     <ul>
 
   <?php
 
-
-
-      for ($i=4; $i > 0; $i--) { 
-        echo "<li>Réservation de la semaine ".$i."</li>";
+     while($row = mysql_fetch_array($result)) {
+        echo "<li>$row</li>\n";
       }
    ?>
    </ul>
   </div>
-<?php }?>
+<?php }
+?>
 <?php
 function terrains(){?>
 
@@ -88,7 +98,7 @@ function terrains(){?>
     for ($i=1; $i < 6; $i++) { 
     
       for ($j=6; $j < 22 ; $j++) { 
-        if (!$array[i]) {
+        if (!$array[i][j]) {
             echo "
 
             <tr>
