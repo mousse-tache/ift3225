@@ -50,6 +50,8 @@ function past($user){?>
 
   <?php
 
+
+
       for ($i=4; $i > 0; $i--) { 
         echo "<li>Réservation de la semaine ".$i."</li>";
       }
@@ -91,7 +93,7 @@ function terrains(){?>
 <?php }?>
 <?php
 function showreserve(){?>
-<form action="index.php">
+<form action="index.php" method="POST">
   <div class="plagehoraire">
       <div>
       <label>Plage horaire: </label>
