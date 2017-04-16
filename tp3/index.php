@@ -113,10 +113,10 @@ else{
 	login();
 	tail();
 }
+//mysqli_close($conn);
 //echo "<h2> TEST </h2>"
 
 function err_msg($data) {
 	echo "<h2 class='error'>$data</h2>";
 }
-mysqli_close($conn);
 ?>

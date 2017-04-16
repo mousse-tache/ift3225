@@ -60,7 +60,7 @@ function past($user){
   $db_host = "mysql.iro.umontreal.ca";
   $db_name = "neveuwil_3225";
   $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
-  $result = mysqli_query($conn, $sql))
+  $result = mysqli_query($conn, $sql);
 
   ?>
   <div class="plagehoraire">
@@ -68,8 +68,8 @@ function past($user){
 
   <?php
 
-     while($row = mysql_fetch_array($result)) {
-        echo "<li>$row</li>\n";
+     while($row = mysql_fetch_array($result, MYSQLI_ASSOC)) {
+         printf("<li>Semaine %s, sur le terrain %s à %s</li>\n",$row['date'],$row['terrain'],$row['debut']);
       }
    ?>
    </ul>
