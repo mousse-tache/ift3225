@@ -65,6 +65,9 @@ if(isset($_POST['submit_form'])){
 	include("closedb.php");
 	
 }
+elseif (isset($_POST['reserver'])) {
+	# sql query to look up si c'est disponible
+}
 else{
 	head(false,false);
 	login();

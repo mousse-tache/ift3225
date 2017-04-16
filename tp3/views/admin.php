@@ -29,7 +29,7 @@ function admin(){?>
       </select>
       </div>
       <div>
-      <input name='submit_form' type="submit" name="montrer" value="Montrer disponibilités">
+      <input name='dispo' type="submit" name="montrer" value="Montrer disponibilités">
       </div>
     
     </form>

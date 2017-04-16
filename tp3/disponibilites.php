@@ -3,7 +3,6 @@ include ('./views/login.php');
 include ('./views/admin.php');
 include ('./views/home.php');
 include('./views/partials.php');
-include('./views/disponibilites.php');
 if(isset($_POST['dispo'])){
 		
 		$user=$_GET['user'];
@@ -49,10 +48,3 @@ if(isset($_POST['dispo'])){
 
 
 }
-else
-{
-	head(false,false);
-	admin();
-	tail();
-}
-

@@ -91,6 +91,7 @@ function terrains(){?>
 <?php }?>
 <?php
 function showreserve(){?>
+<form action="index.php">
   <div class="plagehoraire">
       <div>
       <label>Plage horaire: </label>
@@ -120,4 +121,5 @@ function showreserve(){?>
       <input type="submit" name="reserver" value="Réserver">
       </div>
   </div>
+</form>
 <?php }?>
