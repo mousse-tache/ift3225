@@ -69,6 +69,7 @@ function past($user){?>
 <?php
 function terrains(){?>
   <div class="plagehoraire">
+  <h2>Disponibilités</h2>
   <table>
     <th>Terrain</th>
 

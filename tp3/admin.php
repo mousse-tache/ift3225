@@ -3,51 +3,12 @@ include ('./views/login.php');
 include ('./views/admin.php');
 include ('./views/home.php');
 include('./views/partials.php');
-include('./views/disponibilites.php');
 if(isset($_POST['dispo'])){
-		
-		$user=$_GET['user'];
-		
+			start_session();
 			head(false,false);
-
-			?>
-			  <div class="plagehoraire">
-			  <table>
-			    <th>Terrain</th>
-
-			    <th>Heure</th>
-
-			    <th>Disponibilité</th>
-			  
-			  <?php 
-
-			  for ($i=1; $i < 6; $i++) { 
-			  
-			    for ($j=6; $j < 22 ; $j++) { 
-			        echo "
-
-			          <tr>
-
-			            <td>".$i."</td>
-			            <td>".$j."h</td>
-			            <td></td>
-
-			          </tr>";
-			    }
-
-			  }
-			  
-			   ?>
-
-			   </table>
-			  </div>
-			<?php
-
+			terrains();
 			admin();
 			tail();
-		
-
-
 }
 else
 {

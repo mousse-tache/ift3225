@@ -102,6 +102,12 @@ elseif (isset($_POST['reserver'])) {
 	tail();	
 
 }
+elseif(isset($_POST['dispo'])){
+			head(false,false);
+			terrains();
+			admin();
+			tail();
+}
 else{
 	head(false,false);
 	login();

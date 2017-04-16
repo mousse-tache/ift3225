@@ -4,7 +4,7 @@ function admin(){?>
 <h2>Administration du système</h2>
 <div class="plagehoraire">
       
-    <form action="admin.php" method="POST">
+    <form action="index.php" method="POST">
         <div>
           <label>Plage horaire: </label>
       
@@ -29,11 +29,11 @@ function admin(){?>
       </select>
       </div>
       <div>
-      <input name='dispo' type="submit" name="montrer" value="Montrer disponibilités">
+      <input name='dispo' type="submit" value="Montrer disponibilités">
       </div>
     
     </form>
-    </div>
+</div>
 
 <div class="plagehoraire">
   <h3>Réservations des joueurs</h3>

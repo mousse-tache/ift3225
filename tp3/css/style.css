@@ -11,13 +11,18 @@ body, footer {
 	margin: auto;
 	font-size: 100%;
 	text-align: justify;
-	background-color:#a80a0a;
+	background-color:#0c79af;
 	height: 100%;
 	border: 1px solid white;
 }
 
-h1, h2 {
-	text-align: center;
+h1, h2, h3, h4 {
+	color:white;
+	background-color: #1C2FBB;
+	width: 100%;
+	padding:10px;
+	text-align:left;
+	border-radius: 3px;
 }
 nav {
 	text-align:center; 
@@ -37,7 +42,7 @@ nav li{
 	margin:0;}
 nav > ul a {
 	display:inline-block;
-	background-color:red;
+	background-color:#0c79af;
 	color:white;
 	padding:5%;
 	text-decoration:none;
@@ -84,8 +89,9 @@ input {
 input[type=submit] {
 	font-size:110%;
 	color:white;
-	background-color:#a80a0a;
+	background-color:#1C2FBB;
 	border:none;
+	padding:3px;
 }
 
 #thumbnail {
@@ -105,16 +111,17 @@ main {
 	border-radius: 5px;
 	overflow: hidden;
 	margin-bottom: 10%;
+	padding-bottom:10%;
 }
 
 .error {
 	color:red;
-	border: 1px black solid;
 	background-color: lightgrey;
+	padding:20px;
 }
 
 .plagehoraire {
-	border:2px black solid;
+	border:2px #0c79af solid;
 	width:60%;
 	padding:1%;
 	margin:auto;
