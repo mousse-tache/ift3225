@@ -24,13 +24,7 @@ while ( $range = mysql_fetch_assoc ( $res) )  {
   $admin = $range['admin'];
 }
 $link = 'www-ens.iro.umontreal.ca/~neveuwil/tp3/';
-if($admin == 1) {
-	$link .= "admin.html";
-}
 
-else($admin == 0) {
-	$link .= "user.html";
-}
 $_SESSION["surnom"] = $surnom;
 $_SESSION["admin"] = $admin;
 

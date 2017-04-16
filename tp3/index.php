@@ -37,7 +37,7 @@ if(isset($_POST['submit_form'])){
 	 			admin();
 	 		}
 	 		else {
-	 			home($user);
+	 			home($surnom);
 	 		}
 			tail();
 		}

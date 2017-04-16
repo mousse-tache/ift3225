@@ -12,9 +12,6 @@ function home($user){?>
       showreserve($i);
   ?>
 
-
-  <h2>Réservations passées</h2>
-
   <?php past($user)?>
 
 

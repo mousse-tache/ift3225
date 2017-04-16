@@ -63,6 +63,6 @@ if(isset($_POST['submit_form'])){
 	insc($user,$firstname,$name);
 	tail();
 }
-mysqli_free_result($res);
-include('closedb.php');
+//mysqli_free_result($res);
+//include('closedb.php');
 ?>
