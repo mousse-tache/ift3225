@@ -68,33 +68,45 @@ function past($user){?>
 <?php }?>
 <?php
 function terrains(){?>
+
+<h2>Disponibilités restantes</h2>
   <div class="plagehoraire">
-  <h2>Disponibilités</h2>
   <table>
     <th>Terrain</th>
 
     <th>Heure</th>
-
-    <th>Disponibilité</th>
   
   <?php 
+  $sql="SELECT * FROM Reservations WHERE date='4'";
+  $db_user = "neveuwil";
+  $db_password = "CSTRk5c8UGW_jC";
+  $db_host = "mysql.iro.umontreal.ca";
+  $db_name = "neveuwil_3225";
+  $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+  if ($result = mysqli_query($conn, $sql)) {
+    $array=mysqli_fetch_array($result, MYSQLI_NUM);
+    for ($i=1; $i < 6; $i++) { 
+    
+      for ($j=6; $j < 22 ; $j++) { 
+        if (!$array[i]) {
+            echo "
 
-  for ($i=1; $i < 6; $i++) { 
-  
-    for ($j=6; $j < 22 ; $j++) { 
-        echo "
+            <tr>
 
-          <tr>
+              <td>".$i."</td>
+              <td>".$j."h</td>
+              
 
-            <td>".$i."</td>
-            <td>".$j."h</td>
-            <td></td>
+            </tr>";
+        }
+        /*  
 
-          </tr>";
-    }
 
+        */
+      }
+
+    }    
   }
-  
    ?>
    </table>
   </div>
