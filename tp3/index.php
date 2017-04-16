@@ -11,13 +11,12 @@ if(isset($_POST['submit_form'])){
 	$db_host = "mysql.iro.umontreal.ca";
 	$db_name = "neveuwil_3225";
 	// $mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
-	echo "ARRRRR";
 	$conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
 	$surnom=$_POST['user'];
 	$password=$_POST['password'];
 	$table_name = 'Users';
-	$sql="SELECT * FROM Users"; //WHERE surnom = '".$surnom."'";
-	head();
+	$sql="SELECT * FROM Users WHERE surnom = '".$surnom."' AND mdp = '".$password."'";
+	head(false,false);
 	if ($result = mysqli_query($conn, $sql)) {
 		//echo "<h2>Test</h2>";
 	    //$count=mysqli_num_rows($result);

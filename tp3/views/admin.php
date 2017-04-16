@@ -3,23 +3,24 @@ function admin(){?>
 
 <h2>Administration du système</h2>
 <div class="plagehoraire">
-      <div>
-      <label>Plage horaire: </label>
-  
-    <select id="plage" name="plage">
-    <?php 
-        for ($i=6; $i < 22; $i++) { 
-            echo '<option value="'.$i.'">'.$i.'h</option>';
-          }  
+      
+    <form action="admin.php" method="POST">
+        <div>
+          <label>Plage horaire: </label>
+      
+        <select id="plage" name="plage">
+        <?php 
+            for ($i=6; $i < 22; $i++) { 
+                echo '<option value="'.$i.'">'.$i.'h</option>';
+              }  
 
-     ?> 
-      </select>
-      </div>
-      <div>
-      <label>Terrain: </label>
-
-    <select id="terrain" name="terrain">
-    <?php 
+         ?> 
+          </select>
+          </div>
+        <div>
+          <label>Terrain: </label>
+        <select id="terrain" name="terrain">
+        <?php 
         for ($i=1; $i < 6; $i++) { 
             echo '<option value="'.$i.'">Terrain '.$i.'</option>';
           }  
@@ -28,9 +29,11 @@ function admin(){?>
       </select>
       </div>
       <div>
-      <input type="submit" name="montrer" value="Montrer disponibilités">
+      <input name='submit_form' type="submit" name="montrer" value="Montrer disponibilités">
       </div>
-  </div>
+    
+    </form>
+    </div>
 
 <div class="plagehoraire">
   <h3>Réservations des joueurs</h3>
