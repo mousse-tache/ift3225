@@ -118,5 +118,5 @@ else{
 function err_msg($data) {
 	echo "<h2 class='error'>$data</h2>";
 }
-
+mysqli_close($conn);
 ?>
