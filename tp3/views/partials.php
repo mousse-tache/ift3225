@@ -78,7 +78,7 @@ function past($user){
                   <input type='submit' value='Annuler' name='annuler'></input></li>
   
              \n";
-          echo "</form>";
+          echo "</form>";à
           } 
       }
       else echo "<li>Aucune réservation enregistrée</li>";

@@ -1,0 +1,67 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Système de réservation - TP3 - IFT3225</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Jeu de Taquin créé dans le cadre du cours IFT3225"/>
+        <meta name="keywords" content="IFT3225,DIRO,TP2"/>
+        <link rel="stylesheet" type="text/css" href="css/styleRapport.css" media="screen"/>
+        <script type="text/javascript" src="public/js/jquery-3.1.1.min.js"></script>
+    </head> 
+    
+    <body>   
+    
+    <div id="header">
+        <h1>Rapport</h1>    
+    </div>
+	
+ 
+    <div id="main">
+<h3>Site web et utilistation </h3>
+		<p>
+		Le site est hébergé au DIRO et est disponible <a href="index.php">ICI</a>. Vous pouvez vous inscrire et réserver un terrain pour mercredi prochain, entre autre. Pour avoir accès aux fonctionnalités d'administrateur, veuillez vous connecter à l'aide du surnom "Alice" et du mot de passe "aa". Tous les autres usagers sont non-administrateurs et ont les surnom "bb", "cc", ... "gg" et leur mot de passe est identique à leur surnom.
+		</p> <br/>
+        
+    <h3> Choix de représentations </h3>
+	
+<p>
+	D'abord, la base de données, créée sur les serveurs du DIRO, est très simple. Elle contient deux tables, Users (Utilisateurs) et Reservations. La première contient, pour chaque utilisateur, son surnom, son nom, son prenom, son mot de passe et son statut (administrateur = 1, non-administrateur = 0). La clé primaire de cette table est le surnom. La seconde table a comme colonnes, pour chaque réservation, la date de la réservation (dans le cas de ce TP, pour rendre la tâche plus simple, on utilise un entier, c'est donc très simple d'afficher les réservations des 4 dernières semaines, etc.), l'heure de début, le surnom de l'utilisateur qui a réservé (clé étrangère) et le numéro du terrain. La clé primaire de cette table est la paire constituée de la date et du surnom. Pour les 2 tables, les conditions énoncées dans le TP ont été ajoutée à la base de données, afin de ne pas permettre de stocker des données qui n'ont pas de sens, par exemple une réservation sur le terrain 6 (qui n'existe pas).
+</p>
+<p>
+Par la suite, nous avons opté pour des pages dédiées à une seule feature, pour la connexion et l'inscription des membres. Toutes les fonctionnalités disponibles aux administrateurs sont sur une page et toutes les fonctionnalités disponibles aux utilisateurs normaux sur une autre page.
+</p>
+<p>
+	Au niveau du code, nous avons opté pour des fichiers PHP uniquement, avec le HTML à l'intérieur lorsque c'était nécessaire. Étant donné la petite quantité de HTML nécessaire en comparaison au PHP cela semblait logique. De plus, une partie du temps, le HTML est créé dynamiquement avec PHP (création de tableaux des réservations). Le fichier principal est index.php. Il s'occupe de différents formulaires à l'aide d'un if else if. Autrement, quand il tombe dans le else, il appelle une fonction préalablement incluse qui affiche la page de connexion. Le reste du système est un construit de fonctions situées dans différents fichiers PHP.
+</p>
+<p>
+	Afin d'améliorer le code, il serait possible de mieux regrouper les fonctions dans moins de fichiers PHP. De plus, lors de problèmes avec les accès à la base de donnée, nous avons mis le contenu de config.php, opendb.php et closedb.php (disponibles sur le site du cours) à l'intérieur des fichiers PHP faisant des appels à la base de données, afin d'avoir plus de contrôle sur les tests qui nous ont finalement permis de faire fonctionner le tout. Remettre ces lignes de codes dans leur fichier respectif original pourrait rendre le code plus clair et compact.
+</p>
+<br/>
+<h3> Apprentissages </h3>
+<p>
+Nous avons principalement fait des apprentissages par rapport à PHP et SQL. Étant donné que ces deux technologies mises en paire sont au front de la technologie web, cela fut très enrichissant d'apprendre et d'appliquer les queries en PHP. Quant à CSS et HTML, nous étions déjà à l'aise de les manipuler pour arriver à nos desseins. 
+</p> <br/>
+<h3> Liens et autres </h3>
+<p>
+Le repository (Github) est accessible <a href="https://github.com/msieurmoustache/ift3225/tree/master/tp3">ici</a>, incluant l'ensemble du code source.
+</p>
+
+<p>
+Le site est hébergé au DIRO et est disponible <a href="index.php">ICI</a>.
+</p>
+    </div>
+
+   <div id="footer">
+	   <p>Auteurs:</p>
+        <ul>
+            <li>Félix Bélanger-Robillard</li>
+            <li>William Neveu</li>
+        </ul>
+    </div>
+
+    </body>
+</html>
