@@ -87,9 +87,15 @@ elseif (isset($_POST['reserver'])) {
 	
 	if ($result = mysqli_query($conn, $sql)) {
 		if(mysqli_num_rows($result)==0) {
-			$currentdate=getdate();
+			$currentdate=4;
 			$sql="INSERT INTO Reservations VALUES ('$currentdate', '$plage', '$surnom', '$terrain')";
 			$msg='Réservation effectuée';
+			if (mysqli_query($conn, $sql)) {
+				
+			}
+			else {
+				$msg="Erreur au moment d'envoyer la requête";
+			}
 		}
 		else {
 

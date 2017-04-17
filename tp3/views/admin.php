@@ -48,15 +48,26 @@ function admin(){?>
   </select>
 <?php 
 
-  for ($i=0; $i < 1; $i++) { 
+
+  $sql="SELECT * FROM Users";
+  $db_user = "neveuwil";
+  $db_password = "CSTRk5c8UGW_jC";
+  $db_host = "mysql.iro.umontreal.ca";
+  $db_name = "neveuwil_3225";
+  $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+  $result = mysqli_query($conn, $sql);
+
+  while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
     echo "<div>";
     echo "<p>";
-    echo "User ".$i;
+    echo $row[2]." ".$row[1];
     echo "<ul>";
 
-    for ($j=0; $j < 2; $j++) { 
+    $resql="SELECT * FROM Reservations WHERE surnom='$row[0]'";
+    $reresult=mysqli_query($conn, $sreql);
+    while ($rerow = mysqli_fetch_array($reresult, MYSQLI_NUM)) {
       echo "<li>";
-      echo "Réservation".$j;
+      echo "Semaine ".$rerow[0].", à ".$rerow[1]." sur le terrain ".$rerow[3];
       echo "</li>";
     }
 
