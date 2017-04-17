@@ -3,7 +3,8 @@ function admin(){?>
 
 <h2>Administration du système</h2>
 <div class="plagehoraire">
-      
+    <h3>Disponibilités</h2>
+
     <form action="index.php" method="POST">
         <div>
           <label>Plage horaire: </label>
@@ -36,16 +37,8 @@ function admin(){?>
 </div>
 
 <div class="plagehoraire">
-  <h3>Réservations des joueurs</h3>
-  <label>Jour du mois:</label>
-  <select>
-  <?php 
-        for ($i=5; $i < 31; $i=$i+7) { 
-            echo '<option value="'.$i.'">'.$i.'</option>';
-          }  
-
-     ?> 
-  </select>
+  <h3>Réservations des joueurs</h2>
+  
 <?php 
 
 
@@ -60,14 +53,14 @@ function admin(){?>
   while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
     echo "<div>";
     echo "<p>";
-    echo $row[2]." ".$row[1];
+    echo $row[2]." ".$row[1].", surnom: ".$row[0];
     echo "<ul>";
 
-    $resql="SELECT * FROM Reservations WHERE surnom='$row[0]'";
-    $reresult=mysqli_query($conn, $sreql);
+    $resql="SELECT * FROM Reservations WHERE surnom='".$row[0]."'";
+    $reresult=mysqli_query($conn, $resql);
     while ($rerow = mysqli_fetch_array($reresult, MYSQLI_NUM)) {
       echo "<li>";
-      echo "Semaine ".$rerow[0].", à ".$rerow[1]." sur le terrain ".$rerow[3];
+      echo "Semaine ".$rerow[0].", à ".$rerow[1]."h sur le terrain ".$rerow[3];
       echo "</li>";
     }
 
@@ -75,6 +68,7 @@ function admin(){?>
     echo "</p>";
     echo "</div>";
   }
+  mysqli_close($conn);
 ?>
 </div>
 

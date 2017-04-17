@@ -146,3 +146,6 @@ table, td, th {
 
 
 td,th {width: 30%;}
+
+.dispo{background-color: green;}
+.reserved{background-color: red;}

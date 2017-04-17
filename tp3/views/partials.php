@@ -56,7 +56,7 @@ function past($user){
   ?>
   <h2>Mes réservations</h2>
   <div class="plagehoraire">
-    <ul>
+    <div>
 
   <?php
 
@@ -71,12 +71,19 @@ function past($user){
       $result = mysqli_query($conn, $sql);
       if ($result) {    
          while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-             echo "<li>Semaine ".$row[0].", sur le terrain ".$row[3]." à ".$row[1]."</li>\n";
+          echo "<form action='index.php' method='POST'>";
+          echo "<input name='debut' type='hidden' value='".$row[1]."'></input>";
+          echo "<input name='terrain' type='hidden' value='".$row[3]."'></input>";
+             echo "<li>Semaine ".$row[0].", sur le terrain ".$row[3]." à ".$row[1]."h
+                  <input type='submit' value='Annuler' name='annuler'></input></li>
+  
+             \n";
+          echo "</form>";
           } 
       }
       else echo "<li>Aucune réservation enregistrée</li>";
    ?>
-   </ul>
+   </div>
   </div>
 <?php 
 mysqli_close($conn);
@@ -91,26 +98,45 @@ function terrains(){?>
     <th>Terrain</th>
 
     <th>Heure</th>
-  
+    
+    <th>Disponible</th>
   <?php 
-  $sql="SELECT * FROM Reservations WHERE date='4'";
   $db_user = "neveuwil";
   $db_password = "CSTRk5c8UGW_jC";
   $db_host = "mysql.iro.umontreal.ca";
   $db_name = "neveuwil_3225";
   $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
-  if ($result = mysqli_query($conn, $sql)) {
-    $array=mysqli_fetch_array($result, MYSQLI_NUM);
+  
+
+
     for ($i=1; $i < 6; $i++) { 
     
       for ($j=6; $j < 22 ; $j++) { 
-        if (!$array[i][j]) {
+
+        $sql="SELECT * FROM Reservations WHERE date='4' AND terrain=$i AND debut=$j";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result, MYSQLI_NUM);        
+
+        if ($row) {
             echo "
 
             <tr>
 
               <td>".$i."</td>
               <td>".$j."h</td>
+              <td class='reserved'></td>
+              
+
+            </tr>";
+        }
+        else {
+          echo "
+
+            <tr>
+
+              <td>".$i."</td>
+              <td>".$j."h</td>
+              <td class='dispo'></td>
               
 
             </tr>";
@@ -122,7 +148,9 @@ function terrains(){?>
       }
 
     }    
-  }
+  
+  mysqli_close($conn);
+
    ?>
    </table>
   </div>

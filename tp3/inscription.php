@@ -16,7 +16,7 @@ if(isset($_POST['submit_form'])){
 
 	head(false,false);
 	if ($cpassword==$npassword) {
-		echo '<h2 class="error">Inscription effectuée</h2>';
+		//echo '<h2 class="error">Inscription effectuée</h2>';
 		
 		include("config.php");
 		
@@ -33,7 +33,7 @@ if(isset($_POST['submit_form'])){
 			$sql= "INSERT INTO Users VALUES ('$nuser', '$name', '$firstname', 0, '$npassword')";
 			
 			if (mysqli_query($conn, $sql)) {
-			    echo "New record created successfully";
+			    //echo "New record created successfully";
 			} else {
 			    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}

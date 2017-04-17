@@ -49,6 +49,7 @@ if(isset($_POST['submit_form'])){
 		}
 		mysqli_free_result($result);
 
+
 	}
 	else{
 			//echo "<h2>$surnom $surnom $surnom</h2>";
@@ -63,9 +64,8 @@ if(isset($_POST['submit_form'])){
 	//echo "<h2>res: $res</h2>";
 	//$count = mysqli_num_rows($res);
 	//echo "<h2>count: $count</h2>";
-	
-	include("closedb.php");
-	
+	mysqli_close($conn);
+
 }
 elseif (isset($_POST['reserver'])) {
 	# sql query to look up si c'est disponible
@@ -83,7 +83,7 @@ elseif (isset($_POST['reserver'])) {
 	//err_msg("préglobal");
 	$surnom=$_SESSION["surnom"];
 	//err_msg("postglobal");
-	$sql="SELECT * FROM Reservations WHERE debut='$plage' AND terrain='$terrain'";
+	$sql="SELECT * FROM Reservations WHERE debut='$plage' AND terrain='$terrain' AND date=4";
 	
 	if ($result = mysqli_query($conn, $sql)) {
 		if(mysqli_num_rows($result)==0) {
@@ -94,7 +94,7 @@ elseif (isset($_POST['reserver'])) {
 				
 			}
 			else {
-				$msg="Erreur au moment d'envoyer la requête";
+				$msg="Réservation déjà effectuée cette semaine";
 			}
 		}
 		else {
@@ -106,20 +106,58 @@ elseif (isset($_POST['reserver'])) {
 	err_msg($msg);
 	home($surnom);
 	tail();	
+	mysqli_close($conn);
+
 
 }
 elseif(isset($_POST['dispo'])){
 			head(false,false);
-			terrains();
+			
+
+			
+
+
+			
 			admin();
 			tail();
+}
+elseif(isset($_POST['annuler'])){
+	session_start(); 
+	$db_user = "neveuwil";
+	$db_password = "CSTRk5c8UGW_jC";
+	$db_host = "mysql.iro.umontreal.ca";
+	$db_name = "neveuwil_3225";
+	// $mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
+	//err_msg("Pré-connect");
+	$conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+	//err_msg("Post-connect");
+	$terrain=$_POST['terrain'];
+	$plage=$_POST['debut'];
+	//err_msg("préglobal");
+	$surnom=$_SESSION["surnom"];
+	//err_msg("postglobal");
+	$sql="DELETE FROM Reservations WHERE debut='$plage' AND terrain='$terrain'";
+	
+	if ($result = mysqli_query($conn, $sql)) {
+		
+			$msg='Réservation annulée';
+
+		}
+		else {
+			$msg="Erreur au moment d'envoyer la requête";
+		}
+		
+	head(false,false);
+	err_msg($msg);
+	home($surnom);
+	tail();	
+	mysqli_close($conn);
 }
 else{
 	head(false,false);
 	login();
 	tail();
 }
-//mysqli_close($conn);
 //echo "<h2> TEST </h2>"
 
 function err_msg($data) {
