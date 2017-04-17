@@ -69,7 +69,7 @@ function past($user){
   <?php
       if ($result = mysqli_query($conn, $sql)) {    
          while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-             echo "<li>Semaine ".$row[0].", sur le terrain ".$row[3]." à ".$row[1]."</li>\n";
+             echo "<li>Semaine ".$row[0].", sur le terrain ".$row[3]." à ".$row[1]."h</li>\n";
           } 
       }
       else echo "<li>Aucune réservation enregistrée</li>";
