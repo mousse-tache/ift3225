@@ -53,21 +53,23 @@ function tail(){?>
 <?php
 function past($user){
 
-  session_start(); 
-  $surnom=$_SESSION["surnom"];
-  $sql="SELECT * FROM Reservations WHERE surnom='$surnom'";
-  $db_user = "neveuwil";
-  $db_password = "CSTRk5c8UGW_jC";
-  $db_host = "mysql.iro.umontreal.ca";
-  $db_name = "neveuwil_3225";
-  $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
   ?>
   <h2>Mes réservations</h2>
   <div class="plagehoraire">
     <ul>
 
   <?php
-      if ($result = mysqli_query($conn, $sql)) {    
+
+      session_start(); 
+      $surnom=$_SESSION["surnom"];
+      $sql="SELECT * FROM Reservations WHERE surnom='$surnom'";
+      $db_user = "neveuwil";
+      $db_password = "CSTRk5c8UGW_jC";
+      $db_host = "mysql.iro.umontreal.ca";
+      $db_name = "neveuwil_3225";
+      $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+      $result = mysqli_query($conn, $sql);
+      if ($result) {    
          while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
              echo "<li>Semaine ".$row[0].", sur le terrain ".$row[3]." à ".$row[1]."h</li>\n";
           } 
